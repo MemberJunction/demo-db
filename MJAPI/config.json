@@ -1,0 +1,22 @@
+{
+  "userHandling": {
+    "autoCreateNewUsers": false,
+    "newUserLimitedToAuthorizedDomains": false,
+    "newUserAuthorizedDomains": [],
+    "newUserRoles": [],
+    "updateCacheWhenNotFound": true,
+    "updateCacheWhenNotFoundDelay": 5000,
+    "contextUserForNewUserCreation": "fill.in.user.email.here@whatever.com"
+  },
+  "databaseSettings": {
+    "connectionTimeout": 45000,
+    "requestTimeout": 30000,
+    "metadataCacheRefreshInterval": 180000
+  },
+  "viewingSystem" : {
+    "enableSmartFilters": true
+  },
+  "askSkip" : {
+    "organizationInfo": "Our association focuses on synthetic biology and supporting all professionals in the field. We have a wide array of data in this system that comes from a number of our other various databases. Each schema in this system has data from a single source system like membership or events. There is also a common schema that has information to link records across schemas to perform unified analysis when appropriate for the user's question."
+  }
+}

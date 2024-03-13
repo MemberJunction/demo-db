@@ -1,0 +1,17 @@
+{
+    "schemaName": "common", 
+    "entities": [
+    { 
+        "Name": "Organization Links",
+        "Description": "CompanyLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The CompanyLink table has entries for \"matches\" between records that represent companies/organizations across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwOrganizationLinks", 
+        "Fields": ["OrganizationLinkID","MembershipCompanyID","EventsOrganizationID","EducationCompanyID","CommunityCompanyID","CreatedAt","UpdatedAt"]
+    },
+    { 
+        "Name": "Person Links",
+        "Description": "PersonLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The PersonLink table has entries for \"matches\" between records that represent people across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwPersonLinks", 
+        "Fields": ["PersonLinkID","MembershipMemberID","EventsAttendeeID","EducationStudentID","CommunityAuthorID","CreatedAt","UpdatedAt"]
+    }
+    ]
+}

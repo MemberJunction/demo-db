@@ -1,0 +1,35 @@
+{
+    "schemaName": "education", 
+    "entities": [
+    { 
+        "Name": "Companies__education",
+        "Description": "",
+        "BaseView": "vwCompanies__education", 
+        "Fields": ["CompanyID","CompanyName","Website","Industry","Size","Address","City","State","ZipCode","Country"]
+    },
+    { 
+        "Name": "Courses",
+        "Description": "",
+        "BaseView": "vwCourses", 
+        "Fields": ["CourseID","CourseName","Description","StartDate","EndDate","MemberPrice","NonMemberPrice","InstructorID"]
+    },
+    { 
+        "Name": "Instructors",
+        "Description": "",
+        "BaseView": "vwInstructors", 
+        "Fields": ["InstructorID","FirstName","LastName","Email","Bio"]
+    },
+    { 
+        "Name": "Registrations",
+        "Description": "",
+        "BaseView": "vwRegistrations", 
+        "Fields": ["RegistrationID","CourseID","StudentID","RegistrationDate","RegistrationFee","PaymentStatus","CompletionStatus","CertificationAwarded"]
+    },
+    { 
+        "Name": "Students",
+        "Description": "",
+        "BaseView": "vwStudents", 
+        "Fields": ["StudentID","CompanyID","Email","FirstName","LastName","JobTitle","Address","City","State","ZipCode","Country"]
+    }
+    ]
+}

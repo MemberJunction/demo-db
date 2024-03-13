@@ -1,0 +1,119 @@
+{
+    "schemaName": "common", 
+    "entities": [
+    { 
+        "Name": "Organization Links",
+        "Description": "CompanyLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The CompanyLink table has entries for \"matches\" between records that represent companies/organizations across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwOrganizationLinks", 
+        "Fields": [         
+            {
+                "Name": "OrganizationLinkID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MembershipCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__membership",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EventsOrganizationID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Organizations",
+                "RelatedEntityFieldName": "OrganizationID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EducationCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__education",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CommunityCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__community",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Person Links",
+        "Description": "PersonLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The PersonLink table has entries for \"matches\" between records that represent people across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwPersonLinks", 
+        "Fields": [         
+            {
+                "Name": "PersonLinkID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MembershipMemberID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Members",
+                "RelatedEntityFieldName": "MemberID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EventsAttendeeID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Attendees",
+                "RelatedEntityFieldName": "AttendeeID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EducationStudentID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Students",
+                "RelatedEntityFieldName": "StudentID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CommunityAuthorID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Authors",
+                "RelatedEntityFieldName": "AuthorID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            }        
+        ]
+    }
+    ]
+}

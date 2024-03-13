@@ -1,0 +1,1295 @@
+[{
+    "schemaName": "community", 
+    "entities": [
+    { 
+        "Name": "Authors",
+        "Description": "",
+        "BaseView": "vwAuthors", 
+        "Fields": [         
+            {
+                "Name": "AuthorID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__community",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Companies__community",
+        "Description": "",
+        "BaseView": "vwCompanies__community", 
+        "Fields": [         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Website", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Industry", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Size", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Forums",
+        "Description": "",
+        "BaseView": "vwForums", 
+        "Fields": [         
+            {
+                "Name": "ForumID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Title", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreationDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Posts",
+        "Description": "",
+        "BaseView": "vwPosts", 
+        "Fields": [         
+            {
+                "Name": "PostID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "ForumID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Forums",
+                "RelatedEntityFieldName": "ForumID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "AuthorID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Authors",
+                "RelatedEntityFieldName": "AuthorID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "PostContent", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PostDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Replies",
+        "Description": "",
+        "BaseView": "vwReplies", 
+        "Fields": [         
+            {
+                "Name": "ReplyID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "PostID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Posts",
+                "RelatedEntityFieldName": "PostID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "AuthorID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Authors",
+                "RelatedEntityFieldName": "AuthorID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "ReplyContent", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ReplyDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            }        
+        ]
+    }
+    ]
+},{
+    "schemaName": "reference", 
+    "entities": [
+    { 
+        "Name": "Job Title Seeds",
+        "Description": "",
+        "BaseView": "vwJobTitleSeeds", 
+        "Fields": [         
+            {
+                "Name": "JobTitleID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Name Seeds",
+        "Description": "",
+        "BaseView": "vwNameSeeds", 
+        "Fields": [         
+            {
+                "Name": "NameID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Name", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "NameType", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Post Seeds",
+        "Description": "",
+        "BaseView": "vwPostSeeds", 
+        "Fields": [         
+            {
+                "Name": "PostSeedID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Content", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Type", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Reply Seeds",
+        "Description": "",
+        "BaseView": "vwReplySeeds", 
+        "Fields": [         
+            {
+                "Name": "ReplySeedID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Content", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    }
+    ]
+},{
+    "schemaName": "events", 
+    "entities": [
+    { 
+        "Name": "Attendees",
+        "Description": "",
+        "BaseView": "vwAttendees", 
+        "Fields": [         
+            {
+                "Name": "AttendeeID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "OrganizationID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Organizations",
+                "RelatedEntityFieldName": "OrganizationID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Events",
+        "Description": "",
+        "BaseView": "vwEvents", 
+        "Fields": [         
+            {
+                "Name": "EventID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "EventName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Location", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "StartDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EndDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Zip", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EventType", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "MemberPrice", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "NonMemberPrice", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "SpeakerPrice", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Organizations",
+        "Description": "",
+        "BaseView": "vwOrganizations", 
+        "Fields": [         
+            {
+                "Name": "OrganizationID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "OrganizationName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Website", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Industry", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Size", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Registrations__events",
+        "Description": "",
+        "BaseView": "vwRegistrations__events", 
+        "Fields": [         
+            {
+                "Name": "RegistrationID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "EventID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Events",
+                "RelatedEntityFieldName": "EventID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "AttendeeID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Attendees",
+                "RelatedEntityFieldName": "AttendeeID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RegistrationDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RegistrationFee", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PaymentStatus", 
+                "Description": "Paid, Unpaid, Refunded",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Status", 
+                "Description": "Registered, Pending, Canceled, Attended",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "RegistrationType", 
+                "Description": "Attendee, Sponsor, Speaker",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    }
+    ]
+},{
+    "schemaName": "education", 
+    "entities": [
+    { 
+        "Name": "Companies__education",
+        "Description": "",
+        "BaseView": "vwCompanies__education", 
+        "Fields": [         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Website", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Industry", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Size", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Courses",
+        "Description": "",
+        "BaseView": "vwCourses", 
+        "Fields": [         
+            {
+                "Name": "CourseID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CourseName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "StartDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "EndDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "MemberPrice", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "NonMemberPrice", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "InstructorID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Instructors",
+                "RelatedEntityFieldName": "InstructorID",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Instructors",
+        "Description": "",
+        "BaseView": "vwInstructors", 
+        "Fields": [         
+            {
+                "Name": "InstructorID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Bio", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Registrations",
+        "Description": "",
+        "BaseView": "vwRegistrations", 
+        "Fields": [         
+            {
+                "Name": "RegistrationID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CourseID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Courses",
+                "RelatedEntityFieldName": "CourseID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "StudentID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Students",
+                "RelatedEntityFieldName": "StudentID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RegistrationDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RegistrationFee", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PaymentStatus", 
+                "Description": "Paid, Unpaid, Refunded",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CompletionStatus", 
+                "Description": "Pending, In Progress, Failed, Completed",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CertificationAwarded", 
+                "Description": "",  
+                "Type": "bit",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Students",
+        "Description": "",
+        "BaseView": "vwStudents", 
+        "Fields": [         
+            {
+                "Name": "StudentID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__education",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    }
+    ]
+},{
+    "schemaName": "common", 
+    "entities": [
+    { 
+        "Name": "Organization Links",
+        "Description": "CompanyLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The CompanyLink table has entries for \"matches\" between records that represent companies/organizations across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwOrganizationLinks", 
+        "Fields": [         
+            {
+                "Name": "OrganizationLinkID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MembershipCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__membership",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EventsOrganizationID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Organizations",
+                "RelatedEntityFieldName": "OrganizationID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EducationCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__education",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CommunityCompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__community",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Person Links",
+        "Description": "PersonLink is used to connect data from across multiple schemas. These source schemas represent different source systems like membership, education, events, etc. The PersonLink table has entries for \"matches\" between records that represent people across the different source systems so that we have a structured way to unify this data in the CDP.",
+        "BaseView": "vwPersonLinks", 
+        "Fields": [         
+            {
+                "Name": "PersonLinkID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MembershipMemberID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Members",
+                "RelatedEntityFieldName": "MemberID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EventsAttendeeID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Attendees",
+                "RelatedEntityFieldName": "AttendeeID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "EducationStudentID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Students",
+                "RelatedEntityFieldName": "StudentID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CommunityAuthorID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Authors",
+                "RelatedEntityFieldName": "AuthorID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            }        
+        ]
+    }
+    ]
+},{
+    "schemaName": "membership", 
+    "entities": [
+    { 
+        "Name": "Companies__membership",
+        "Description": "",
+        "BaseView": "vwCompanies__membership", 
+        "Fields": [         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Website", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Industry", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Size", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "TaxID", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Subsection", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "TotalRevenue", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "InformationTechnologyExpense", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Member Types",
+        "Description": "",
+        "BaseView": "vwMemberTypes", 
+        "Fields": [         
+            {
+                "Name": "MemberTypeID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "TypeName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "AnnualDues", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Members",
+        "Description": "",
+        "BaseView": "vwMembers", 
+        "Fields": [         
+            {
+                "Name": "MemberID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__membership",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JoinDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MemberTypeID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Member Types",
+                "RelatedEntityFieldName": "MemberTypeID",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Membership Renewals",
+        "Description": "",
+        "BaseView": "vwMembershipRenewals", 
+        "Fields": [         
+            {
+                "Name": "RenewalID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MemberID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Members",
+                "RelatedEntityFieldName": "MemberID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RenewalDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "PaymentAmount", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PaymentStatus", 
+                "Description": "Pending, Completed, Refunded",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    }
+    ]
+}]

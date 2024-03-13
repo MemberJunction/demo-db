@@ -1,0 +1,225 @@
+{
+    "schemaName": "membership", 
+    "entities": [
+    { 
+        "Name": "Companies__membership",
+        "Description": "",
+        "BaseView": "vwCompanies__membership", 
+        "Fields": [         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Website", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Industry", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Size", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Address", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "City", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "State", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ZipCode", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Country", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "TaxID", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Subsection", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "TotalRevenue", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "InformationTechnologyExpense", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Member Types",
+        "Description": "",
+        "BaseView": "vwMemberTypes", 
+        "Fields": [         
+            {
+                "Name": "MemberTypeID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "TypeName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "AnnualDues", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Members",
+        "Description": "",
+        "BaseView": "vwMembers", 
+        "Fields": [         
+            {
+                "Name": "MemberID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompanyID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Companies__membership",
+                "RelatedEntityFieldName": "CompanyID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Email", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FirstName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "LastName", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JobTitle", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "JoinDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MemberTypeID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Member Types",
+                "RelatedEntityFieldName": "MemberTypeID",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Membership Renewals",
+        "Description": "",
+        "BaseView": "vwMembershipRenewals", 
+        "Fields": [         
+            {
+                "Name": "RenewalID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MemberID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Members",
+                "RelatedEntityFieldName": "MemberID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RenewalDate", 
+                "Description": "",  
+                "Type": "date",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "PaymentAmount", 
+                "Description": "",  
+                "Type": "money",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PaymentStatus", 
+                "Description": "Pending, Completed, Refunded",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    }
+    ]
+}

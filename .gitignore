@@ -1,0 +1,16 @@
+*.env
+CodeGen/node_modules/.package-lock.json
+*node_modules* 
+package-lock.json
+CodeGen/dist/*
+MJExplorer/dist/*
+MJAPI/dist/*
+GeneratedEntities/dist/*
+build.log.json
+install.config.json
+*.zip
+*.output.txt
+MJExplorer/.angular/
+MJExplorer/src/environments/environment.development.ts
+MJExplorer/src/environments/environment.staging.ts
+MJExplorer/src/environments/environment.ts
