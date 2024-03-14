@@ -1,4 +1,4 @@
-SELECT * FROM __mj.vwEntityFields WHERE Entity='Members' ORDER BY sequence
+SELECT * FROM __mj.vwEntityFields WHERE Entity='Person Links' ORDER BY sequence
 SELECT * FROM __mj.vwEntityFields WHERE Entity IN(SELECT Name FROM __mj.vwEntities WHERE SchemaName<>'__mj') ORDER BY Entity,sequence
 SELECT * FROM __mj.vwEntities WHERE SchemaName <>'__mj' ORDER BY CreatedAt
 
@@ -57,7 +57,8 @@ SELECT
                ELSE 0 
             END 
       END,
-   ROW_NUMBER() OVER (PARTITION BY sf.EntityID, sf.FieldName ORDER BY (SELECT NULL)) AS rn
+   ROW_NUMBER() OVER (PARTITION BY sf.EntityID, sf.FieldName ORDER BY (SELECT NULL)) AS rn,
+   fk.*
 FROM
    [__mj].vwSQLColumnsAndEntityFields sf
 LEFT OUTER JOIN	
@@ -74,7 +75,7 @@ LEFT OUTER JOIN
    [__mj].Entity re -- Related Entity
 ON
    re.BaseTable = fk.referenced_table AND
-   re.SchemaName = fk.[schema_name]
+   re.SchemaName = fk.[referenced_schema]
 LEFT OUTER JOIN 
    [__mj].vwTablePrimaryKeys pk
 ON

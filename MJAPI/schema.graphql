@@ -1986,7 +1986,12 @@ type PersonLink_ {
   EducationStudentID: Int
   EventsAttendeeID: Int
   MembershipMemberID: Int
+  MembershipRenewalsArray: [MembershipRenewal_!]!
   PersonLinkID: Int!
+  PostsArray: [Post_!]!
+  RegistrationsArray: [Registration_!]!
+  Registrations__eventsArray: [Registration__events_!]!
+  RepliesArray: [Reply_!]!
   UpdatedAt: Timestamp!
 }
 
@@ -2003,6 +2008,24 @@ type Post_ {
   PostDate: Timestamp!
   PostID: Int!
   RepliesArray: [Reply_!]!
+}
+
+input PotentialDuplicateRequestType {
+  EntitiyID: Int
+  EntityDocumentID: Int!
+  EntityName: String
+  PrimaryKeyValues: [PrimaryKeyValueInputType!]!
+  ProbabilityScore: Int
+}
+
+type PotentialDuplicateResponseType {
+  Duplicates: [PotentialDuplicateType!]!
+  EntityID: Int!
+}
+
+type PotentialDuplicateType {
+  PrimaryKeyValues: [PrimaryKeyValueOutputType!]!
+  ProbabilityScore: Float!
 }
 
 input PrimaryKeyValueInputType {
@@ -2107,6 +2130,7 @@ type Query {
   GetEntityRecordNames(info: [EntityRecordNameInput!]!): [EntityRecordNameResult!]!
   GetQueryData(QueryID: Int!): RunQueryResultType!
   GetRecordDependencies(entityName: String!, primaryKeyValues: [PrimaryKeyValueInputType!]!): [RecordDependencyResult!]!
+  GetRecordDuplicates(params: PotentialDuplicateRequestType!): PotentialDuplicateResponseType!
   GetRecordFavoriteStatus(params: UserFavoriteSearchParams!): UserFavoriteResult!
   GetReportData(ReportID: Int!): RunReportResultType!
   Instructor(InstructorID: Int!): Instructor_

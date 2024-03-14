@@ -181,15 +181,6 @@
                 "build"
             ],
             "when": "after"
-        },
-        {
-            "workingDirectory": "../MJAPI",
-            "command": "npm",
-            "args": [
-                "start"
-            ],
-            "timeout": 30000,
-            "when": "after"
-        }
+        } 
     ]
 }
