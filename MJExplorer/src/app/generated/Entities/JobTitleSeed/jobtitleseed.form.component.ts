@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { JobTitleSeedEntity } from 'mj_generatedentities';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormComponent } from '@memberjunction/ng-base-forms';
 import { LoadJobTitleSeedDetailsComponent } from "./sections/details.component"
 @RegisterClass(BaseFormComponent, 'Job Title Seeds') // Tell MemberJunction about this class
 @Component({

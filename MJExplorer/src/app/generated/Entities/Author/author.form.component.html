@@ -13,21 +13,21 @@
                         </ng-template>
                     </kendo-tabstrip-tab>
                                           
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Posts')">
-                        <ng-template kendoTabTitle>Posts</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Posts')"  
-                                               [AllowLoad]="this.IsCurrentTab('Posts')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
-          
                     <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Replies')">
                         <ng-template kendoTabTitle>Replies</ng-template>
                         <ng-template kendoTabContent >
                             <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Replies')"  
                                                [AllowLoad]="this.IsCurrentTab('Replies')"  
+                                               [EditMode]="this.GridEditMode()"  
+                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
+                        </ng-template>
+                    </kendo-tabstrip-tab>
+          
+                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Posts')">
+                        <ng-template kendoTabTitle>Posts</ng-template>
+                        <ng-template kendoTabContent >
+                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Posts')"  
+                                               [AllowLoad]="this.IsCurrentTab('Posts')"  
                                                [EditMode]="this.GridEditMode()"  
                                                [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
                         </ng-template>

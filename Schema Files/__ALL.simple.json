@@ -3,37 +3,37 @@
     "entities": [
     { 
         "Name": "AI Actions",
-        "Description": "",
+        "Description": "List of all actions that are possible across all AI Models",
         "BaseView": "vwAIActions", 
         "Fields": ["ID","Name","Description","DefaultModelID","DefaultPrompt","IsActive","CreatedAt","UpdatedAt","DefaultModel"]
     },
     { 
         "Name": "AI Model Actions",
-        "Description": "",
+        "Description": "Tracks the actions supported by each AI Model",
         "BaseView": "vwAIModelActions", 
         "Fields": ["ID","AIModelID","AIActionID","IsActive","CreatedAt","UpdatedAt","AIModel","AIAction"]
     },
     { 
         "Name": "AI Model Types",
-        "Description": "",
+        "Description": "Types of AI Models",
         "BaseView": "vwAIModelTypes", 
         "Fields": ["ID","Name","Description"]
     },
     { 
         "Name": "AI Models",
-        "Description": "",
+        "Description": "Catalog of all AI Models configured in the system.",
         "BaseView": "vwAIModels", 
         "Fields": ["ID","Name","Vendor","AIModelTypeID","Description","DriverClass","DriverImportPath","IsActive","CreatedAt","UpdatedAt"]
     },
     { 
         "Name": "Application Entities",
-        "Description": "",
+        "Description": "List of entities within each application. An application can have any number of entities and an entity can be part of any number of applications.",
         "BaseView": "vwApplicationEntities", 
         "Fields": ["ID","ApplicationName","EntityID","Sequence","DefaultForNewUser","CreatedAt","UpdatedAt","Application","Entity","EntityBaseTable","EntityCodeName","EntityClassName","EntityBaseTableCodeName"]
     },
     { 
         "Name": "Applications",
-        "Description": "",
+        "Description": "Applications are used to group entities in the user interface for ease of user access",
         "BaseView": "vwApplications", 
         "Fields": ["ID","Name","Description","CreatedAt","UpdatedAt"]
     },
@@ -63,7 +63,7 @@
     },
     { 
         "Name": "Companies",
-        "Description": "",
+        "Description": "A list of organizational units within your business. These can be subsidiaries or divisions or other units. Companies are used to organizae employee records and also for separating integrations if you have multiple integrations of the same type of system.",
         "BaseView": "vwCompanies", 
         "Fields": ["ID","Name","Description","Website","LogoURL","CreatedAt","UpdatedAt","Domain"]
     },
@@ -93,7 +93,7 @@
     },
     { 
         "Name": "Company Integrations",
-        "Description": "",
+        "Description": "Links individual company records to specific integrations",
         "BaseView": "vwCompanyIntegrations", 
         "Fields": ["ID","CompanyName","IntegrationName","IsActive","AccessToken","RefreshToken","TokenExpirationDate","APIKey","CreatedAt","UpdatedAt","ExternalSystemID","IsExternalSystemReadOnly","ClientID","ClientSecret","CustomAttribute1","CompanyID","IntegrationID","Company","Integration","DriverClassName","DriverImportPath","LastRunID","LastRunStartedAt","LastRunEndedAt"]
     },
@@ -117,7 +117,7 @@
     },
     { 
         "Name": "Dashboards",
-        "Description": "",
+        "Description": "Dashboards are used to group resources into a single display pane for an end-user",
         "BaseView": "vwDashboards", 
         "Fields": ["ID","Name","Description","CategoryID","UIConfigDetails","UserID","Category","User"]
     },
@@ -135,13 +135,13 @@
     },
     { 
         "Name": "Dataset Items",
-        "Description": "",
+        "Description": "A single item in a Dataset and can be sourced from multiple methods.",
         "BaseView": "vwDatasetItems", 
         "Fields": ["ID","Code","DatasetName","Sequence","EntityID","WhereClause","DateFieldToCheck","Description","CreatedAt","UpdatedAt","Entity"]
     },
     { 
         "Name": "Datasets",
-        "Description": "",
+        "Description": "Cacheable sets of data that can span one or more items",
         "BaseView": "vwDatasets", 
         "Fields": ["ID","Name","Description","CreatedAt","UpdatedAt"]
     },
@@ -165,19 +165,19 @@
     },
     { 
         "Name": "Employees",
-        "Description": "",
+        "Description": "A list of employees across all units of your organization",
         "BaseView": "vwEmployees", 
         "Fields": ["ID","BCMID","FirstName","LastName","Title","Email","Phone","Active","CompanyID","SupervisorID","CreatedAt","UpdatedAt","FirstLast","Supervisor","SupervisorFirstName","SupervisorLastName","SupervisorEmail"]
     },
     { 
         "Name": "Entities",
-        "Description": "",
+        "Description": "Catalog of all entities across all schemas",
         "BaseView": "vwEntities", 
         "Fields": ["ID","ParentID","Name","NameSuffix","Description","AutoUpdateDescription","BaseTable","BaseView","BaseViewGenerated","SchemaName","VirtualEntity","TrackRecordChanges","AuditRecordAccess","AuditViewRuns","IncludeInAPI","AllowAllRowsAPI","AllowUpdateAPI","AllowCreateAPI","AllowDeleteAPI","CustomResolverAPI","AllowUserSearchAPI","FullTextSearchEnabled","FullTextCatalog","FullTextCatalogGenerated","FullTextIndex","FullTextIndexGenerated","FullTextSearchFunction","FullTextSearchFunctionGenerated","UserViewMaxRows","spCreate","spUpdate","spDelete","spCreateGenerated","spUpdateGenerated","spDeleteGenerated","CascadeDeletes","UserFormGenerated","EntityObjectSubclassName","EntityObjectSubclassImport","CreatedAt","UpdatedAt","CodeName","ClassName","BaseTableCodeName","ParentEntity","ParentBaseTable","ParentBaseView"]
     },
     { 
         "Name": "Entity AI Actions",
-        "Description": "",
+        "Description": "Tracks the AI actions that should be invoked based on changes to records within a given entity.",
         "BaseView": "vwEntityAIActions", 
         "Fields": ["ID","EntityID","AIActionID","AIModelID","Name","Prompt","TriggerEvent","UserMessage","OutputType","OutputField","SkipIfOutputFieldNotEmpty","OutputEntityID","Comments","Entity","AIAction","AIModel","OutputEntity"]
     },
@@ -203,17 +203,17 @@
         "Name": "Entity Field Values",
         "Description": "",
         "BaseView": "vwEntityFieldValues", 
-        "Fields": ["ID","EntityID","EntityFieldName","Sequence","Value","Code","Description","CreatedAt","UpdatedAt","Entity"]
+        "Fields": ["ID","EntityID","EntityFieldName","Sequence","Value","Code","Description","CreatedAt","UpdatedAt","EntityField","Entity"]
     },
     { 
         "Name": "Entity Fields",
-        "Description": "",
+        "Description": "List of all fields within each entity with metadata about each field",
         "BaseView": "vwEntityFields", 
         "Fields": ["ID","EntityID","Sequence","Name","DisplayName","Description","AutoUpdateDescription","IsPrimaryKey","IsUnique","Category","Type","Length","Precision","Scale","AllowsNull","DefaultValue","AutoIncrement","ValueListType","ExtendedType","DefaultInView","ViewCellTemplate","DefaultColumnWidth","AllowUpdateAPI","AllowUpdateInView","IncludeInUserSearchAPI","FullTextSearchEnabled","UserSearchParamFormatAPI","IncludeInGeneratedForm","GeneratedFormSection","IsVirtual","IsNameField","RelatedEntityID","RelatedEntityFieldName","IncludeRelatedEntityNameFieldInBaseView","RelatedEntityNameFieldMap","CreatedAt","UpdatedAt","Entity","SchemaName","BaseTable","BaseView","EntityCodeName","EntityClassName","RelatedEntity","RelatedEntitySchemaName","RelatedEntityBaseTable","RelatedEntityBaseView","RelatedEntityCodeName","RelatedEntityClassName"]
     },
     { 
         "Name": "Entity Permissions",
-        "Description": "",
+        "Description": "Security settings for each entity",
         "BaseView": "vwEntityPermissions", 
         "Fields": ["ID","EntityID","RoleName","CanCreate","CanRead","CanUpdate","CanDelete","ReadRLSFilterID","CreateRLSFilterID","UpdateRLSFilterID","DeleteRLSFilterID","CreatedAt","UpdatedAt","Entity","RoleSQLName","CreateRLSFilter","ReadRLSFilter","UpdateRLSFilter","DeleteRLSFilter"]
     },
@@ -225,9 +225,9 @@
     },
     { 
         "Name": "Entity Relationships",
-        "Description": "",
+        "Description": "Metadata about relationships between entities including display preferences for the UI",
         "BaseView": "vwEntityRelationships", 
-        "Fields": ["ID","EntityID","RelatedEntityID","BundleInAPI","IncludeInParentAllQuery","Type","EntityKeyField","RelatedEntityJoinField","JoinView","JoinEntityJoinField","JoinEntityInverseJoinField","DisplayInForm","DisplayName","DisplayUserViewGUID","CreatedAt","UpdatedAt","Entity","EntityBaseTable","EntityBaseView","RelatedEntity","RelatedEntityBaseTable","RelatedEntityBaseView","RelatedEntityClassName","RelatedEntityCodeName","RelatedEntityBaseTableCodeName","DisplayUserViewName","DisplayUserViewID"]
+        "Fields": ["ID","EntityID","Sequence","RelatedEntityID","BundleInAPI","IncludeInParentAllQuery","Type","EntityKeyField","RelatedEntityJoinField","JoinView","JoinEntityJoinField","JoinEntityInverseJoinField","DisplayInForm","DisplayName","DisplayUserViewGUID","CreatedAt","UpdatedAt","Entity","EntityBaseTable","EntityBaseView","RelatedEntity","RelatedEntityBaseTable","RelatedEntityBaseView","RelatedEntityClassName","RelatedEntityCodeName","RelatedEntityBaseTableCodeName","DisplayUserViewName","DisplayUserViewID"]
     },
     { 
         "Name": "Error Logs",
@@ -236,26 +236,50 @@
         "Fields": ["ID","CompanyIntegrationRunID","CompanyIntegrationRunDetailID","Code","Message","CreatedAt","CreatedBy","Status","Category","Details"]
     },
     { 
-        "Name": "Integration URL Formats",
+        "Name": "File Categories",
         "Description": "",
+        "BaseView": "vwFileCategories", 
+        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","Parent"]
+    },
+    { 
+        "Name": "File Entity Record Links",
+        "Description": "",
+        "BaseView": "vwFileEntityRecordLinks", 
+        "Fields": ["ID","FileID","EntityID","RecordID","CreatedAt","UpdatedAt","File","Entity"]
+    },
+    { 
+        "Name": "File Storage Providers",
+        "Description": "",
+        "BaseView": "vwFileStorageProviders", 
+        "Fields": ["ID","Name","Description","ServerDriverKey","ClientDriverKey","Priority","IsActive","CreatedAt","UpdatedAt"]
+    },
+    { 
+        "Name": "Files",
+        "Description": "",
+        "BaseView": "vwFiles", 
+        "Fields": ["ID","Name","Description","ProviderID","ContentType","ProviderKey","CategoryID","Status","CreatedAt","UpdatedAt","Provider","Category"]
+    },
+    { 
+        "Name": "Integration URL Formats",
+        "Description": "Used to generate web links for end users to easily access resources in a source system. URL Formats support templating to inject various field values at run-time to take a user directly to a resource in a source system.",
         "BaseView": "vwIntegrationURLFormats", 
         "Fields": ["ID","IntegrationName","EntityID","URLFormat","IntegrationID","Integration","NavigationBaseURL","FullURLFormat"]
     },
     { 
         "Name": "Integrations",
-        "Description": "",
+        "Description": "Catalog of all integrations that have been configured in the system.",
         "BaseView": "vwIntegrations", 
         "Fields": ["ID","Name","Description","NavigationBaseURL","ClassName","ImportPath","BatchMaxRequestCount","BatchRequestWaitTime","CreatedAt","UpdatedAt"]
     },
     { 
         "Name": "List Details",
-        "Description": "",
+        "Description": "Tracks the records within each list.",
         "BaseView": "vwListDetails", 
         "Fields": ["ID","ListID","RecordID","Sequence"]
     },
     { 
         "Name": "Lists",
-        "Description": "",
+        "Description": "Static lists are useful for controlling a set of data for a given entity. These can be used programatically for applications like logging and tracking long-running tasks and also by end users for tracking any particular list of records they want to directly control the set.",
         "BaseView": "vwLists", 
         "Fields": ["ID","Name","Description","EntityID","UserID","ExternalSystemRecordID","CompanyIntegrationID","CreatedAt","UpdatedAt","Entity","User"]
     },
@@ -279,7 +303,7 @@
     },
     { 
         "Name": "Queries",
-        "Description": "",
+        "Description": "Catalog of stored queries. This is useful for any arbitrary query that is known to be performant and correct and can be reused. Queries can be viewed/run by a user, used programatically via RunQuery, and also used by AI systems for improved reliability instead of dynamically generated SQL. Queries can also improve security since they store the SQL instead of using dynamic SQL.",
         "BaseView": "vwQueries", 
         "Fields": ["ID","Name","Description","CategoryID","SQL","OriginalSQL","Feedback","Status","QualityRank","CreatedAt","UpdatedAt","Category"]
     },
@@ -315,13 +339,13 @@
     },
     { 
         "Name": "Queues",
-        "Description": "",
+        "Description": "Queues can be used to async execute long running tasks",
         "BaseView": "vwQueues", 
         "Fields": ["ID","Name","Description","QueueTypeID","IsActive","ProcessPID","ProcessPlatform","ProcessVersion","ProcessCwd","ProcessIPAddress","ProcessMacAddress","ProcessOSName","ProcessOSVersion","ProcessHostName","ProcessUserID","ProcessUserName","LastHeartbeat","CreatedAt","UpdatedAt","QueueType"]
     },
     { 
         "Name": "Record Changes",
-        "Description": "",
+        "Description": "For entities that have TrackRecordChanges=1, Record Changes will store the history of all changes made within the system. For integrations you can directly add values here if you have inbound signals indicating records were changed in a source system. This entity only automatically captures Record Changes if they were made within the system.",
         "BaseView": "vwRecordChanges", 
         "Fields": ["ID","EntityID","RecordID","UserID","ChangedAt","ChangesJSON","ChangesDescription","FullRecordJSON","Status","Comments","Entity","User"]
     },
@@ -363,9 +387,9 @@
     },
     { 
         "Name": "Roles",
-        "Description": "",
+        "Description": "Roles are used for security administration and can have zero to many Users as members",
         "BaseView": "vwRoles", 
-        "Fields": ["ID","Name","Description","AzureID","SQLName","CreatedAt","UpdatedAt"]
+        "Fields": ["ID","Name","Description","DirectoryID","SQLName","CreatedAt","UpdatedAt"]
     },
     { 
         "Name": "Row Level Security Filters",
@@ -375,25 +399,25 @@
     },
     { 
         "Name": "Schema Info",
-        "Description": "",
+        "Description": "Tracks the schemas in the system and the ID ranges that are valid for entities within each schema.",
         "BaseView": "vwSchemaInfos", 
         "Fields": ["ID","SchemaName","EntityIDMin","EntityIDMax","Comments","CreatedAt","UpdatedAt"]
     },
     { 
         "Name": "Skills",
-        "Description": "",
+        "Description": "A hierarchical list of possible skills that are linked to Employees and can also be linked to any other entity",
         "BaseView": "vwSkills", 
         "Fields": ["ID","Name","ParentID","CreatedAt","UpdatedAt","Parent"]
     },
     { 
         "Name": "Tagged Items",
-        "Description": "",
+        "Description": "Tracks the links between any record in any entity with Tags",
         "BaseView": "vwTaggedItems", 
         "Fields": ["ID","TagID","EntityID","RecordID","Tag","Entity"]
     },
     { 
         "Name": "Tags",
-        "Description": "",
+        "Description": "Tags are used to arbitrarily associate any record in any entity with addtional information.",
         "BaseView": "vwTags", 
         "Fields": ["ID","Name","DisplayName","Description","ParentID","Parent"]
     },
@@ -411,7 +435,7 @@
     },
     { 
         "Name": "User Favorites",
-        "Description": "",
+        "Description": "Records that each user can mark as a favorite for easy access",
         "BaseView": "vwUserFavorites", 
         "Fields": ["ID","UserID","EntityID","RecordID","CreatedAt","UpdatedAt","Entity","EntityBaseTable","EntityBaseView"]
     },
@@ -437,29 +461,29 @@
         "Name": "User View Categories",
         "Description": "",
         "BaseView": "vwUserViewCategories", 
-        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","Parent"]
+        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","EntityID","Parent"]
     },
     { 
         "Name": "User View Run Details",
-        "Description": "",
+        "Description": "Tracks the set of records that were included in each run of a given user view.",
         "BaseView": "vwUserViewRunDetails", 
         "Fields": ["ID","UserViewRunID","RecordID","UserViewID","EntityID"]
     },
     { 
         "Name": "User View Runs",
-        "Description": "",
+        "Description": "User Views can be logged when run to capture the date and user that ran the view as well as the output results.",
         "BaseView": "vwUserViewRuns", 
         "Fields": ["ID","UserViewID","RunAt","RunByUserID","UserView","RunByUser"]
     },
     { 
         "Name": "User Views",
-        "Description": "",
+        "Description": "Views are sets of records within a given entity defined by filtering rules. Views can be used programatically to retrieve dynamic sets of data and in user interfaces like MJ Explorer for end-user consumption.",
         "BaseView": "vwUserViews", 
         "Fields": ["ID","UserID","EntityID","Name","GUID","Description","CategoryID","IsShared","IsDefault","GridState","FilterState","CustomFilterState","SmartFilterEnabled","SmartFilterPrompt","SmartFilterWhereClause","SmartFilterExplanation","WhereClause","CustomWhereClause","SortState","CreatedAt","UpdatedAt","UserName","UserFirstLast","UserEmail","UserType","Entity","EntityBaseView"]
     },
     { 
         "Name": "Users",
-        "Description": "",
+        "Description": "A list of all users who have or had access to the system",
         "BaseView": "vwUsers", 
         "Fields": ["ID","Name","FirstName","LastName","Title","Email","Type","IsActive","LinkedRecordType","EmployeeID","LinkedEntityID","LinkedEntityRecordID","CreatedAt","UpdatedAt","FirstLast","EmployeeFirstLast","EmployeeEmail","EmployeeTitle","EmployeeSupervisor","EmployeeSupervisorEmail"]
     },
@@ -474,6 +498,12 @@
         "Description": "",
         "BaseView": "vwVectorIndexes", 
         "Fields": ["ID","Name","Description","VectorDatabaseID","EmbeddingModelID","CreatedAt","UpdatedAt","VectorDatabase","EmbeddingModel"]
+    },
+    { 
+        "Name": "Version Installations",
+        "Description": "",
+        "BaseView": "vwVersionInstallations", 
+        "Fields": ["ID","MajorVersion","MinorVersion","PatchVersion","Type","InstalledAt","Status","InstallLog","Comments","CreatedAt","UpdatedAt","CompleteVersion"]
     },
     { 
         "Name": "Workflow Engines",
@@ -491,17 +521,17 @@
         "Name": "Workflows",
         "Description": "",
         "BaseView": "vwWorkflows", 
-        "Fields": ["ID","Name","Description","WorkflowEngineName","CompanyName","ExternalSystemRecordID","CreatedAt","UpdatedAt"]
+        "Fields": ["ID","Name","Description","WorkflowEngineName","CompanyName","ExternalSystemRecordID","CreatedAt","UpdatedAt","AutoRunEnabled","AutoRunIntervalUnits","AutoRunInterval","SubclassName","AutoRunIntervalMinutes"]
     },
     { 
         "Name": "Workspace Items",
-        "Description": "",
+        "Description": "Tracks the resources that are active within a given worksapce",
         "BaseView": "vwWorkspaceItems", 
         "Fields": ["ID","Name","Description","WorkSpaceID","ResourceTypeID","ResourceRecordID","Sequence","Configuration","WorkSpace","ResourceType"]
     },
     { 
         "Name": "Workspaces",
-        "Description": "",
+        "Description": "A user can have one or more workspaces",
         "BaseView": "vwWorkspaces", 
         "Fields": ["ID","Name","Description","UserID","User"]
     }
@@ -579,7 +609,7 @@
     },
     { 
         "Name": "Events",
-        "Description": "",
+        "Description": "Listing of all past, present, and future events",
         "BaseView": "vwEvents", 
         "Fields": ["EventID","EventName","Location","Description","StartDate","EndDate","Address","City","State","Zip","Country","EventType","MemberPrice","NonMemberPrice","SpeakerPrice"]
     },

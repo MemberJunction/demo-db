@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { PersonLinkEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Person Links.details') // Tell MemberJunction about this class 
@@ -16,19 +16,19 @@ import { PersonLinkEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Membership Member ID</label>
-            <kendo-numerictextbox [(value)]="record.MembershipMemberID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.MembershipMemberID!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Events Attendee ID</label>
-            <kendo-numerictextbox [(value)]="record.EventsAttendeeID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.EventsAttendeeID!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Education Student ID</label>
-            <kendo-numerictextbox [(value)]="record.EducationStudentID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.EducationStudentID!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Community Author ID</label>
-            <kendo-numerictextbox [(value)]="record.CommunityAuthorID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.CommunityAuthorID!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Created At</label>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { MembershipRenewalEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Membership Renewals.details') // Tell MemberJunction about this class 
@@ -24,7 +24,7 @@ import { MembershipRenewalEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Payment Amount</label>
-            <kendo-numerictextbox [(value)]="record.PaymentAmount" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.PaymentAmount!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Payment Status</label>

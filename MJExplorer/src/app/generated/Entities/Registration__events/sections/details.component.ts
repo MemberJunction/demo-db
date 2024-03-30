@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { Registration__eventsEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Registrations__events.details') // Tell MemberJunction about this class 
@@ -28,7 +28,7 @@ import { Registration__eventsEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Registration Fee</label>
-            <kendo-numerictextbox [(value)]="record.RegistrationFee" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.RegistrationFee!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Payment Status</label>
@@ -36,7 +36,7 @@ import { Registration__eventsEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Status</label>
-            <kendo-textarea [(ngModel)]="record.Status" ></kendo-textarea>   
+            <kendo-dropdownlist [data]="['Canceled', 'Attended', 'Registered', 'Pending']" [(ngModel)]="record.Status!" ></kendo-dropdownlist>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Registration Type</label>

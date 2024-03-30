@@ -12,56 +12,7 @@
                             <mj-form-section Entity="Person Links" Section="details" [record]="record" [EditMode]="this.EditMode"></mj-form-section>
                         </ng-template>
                     </kendo-tabstrip-tab>
-                                          
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Membership Renewals')">
-                        <ng-template kendoTabTitle>Membership Renewals</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Membership Renewals')"  
-                                               [AllowLoad]="this.IsCurrentTab('Membership Renewals')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
-          
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Education - Registrations')">
-                        <ng-template kendoTabTitle>Education - Registrations</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Registrations')"  
-                                               [AllowLoad]="this.IsCurrentTab('Education - Registrations')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
-          
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Event Registrations')">
-                        <ng-template kendoTabTitle>Event Registrations</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Registrations__events')"  
-                                               [AllowLoad]="this.IsCurrentTab('Event Registrations')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
-          
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Community - Posts')">
-                        <ng-template kendoTabTitle>Community - Posts</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Posts')"  
-                                               [AllowLoad]="this.IsCurrentTab('Community - Posts')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
-          
-                    <kendo-tabstrip-tab  [selected]="this.RegisterAndCheckIfCurrentTab('Community - Replies')">
-                        <ng-template kendoTabTitle>Community - Replies</ng-template>
-                        <ng-template kendoTabContent >
-                            <mj-user-view-grid [Params]="this.BuildRelationshipViewParamsByEntityName('Replies')"  
-                                               [AllowLoad]="this.IsCurrentTab('Community - Replies')"  
-                                               [EditMode]="this.GridEditMode()"  
-                                               [BottomMargin]="GridBottomMargin"></mj-user-view-grid>
-                        </ng-template>
-                    </kendo-tabstrip-tab>
+                                
                             </kendo-tabstrip>
     </form>
   </div>

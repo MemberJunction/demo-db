@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { Company__membershipEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Companies__membership.details') // Tell MemberJunction about this class 
@@ -56,15 +56,15 @@ import { Company__membershipEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Subsection</label>
-            <kendo-numerictextbox [(value)]="record.Subsection" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.Subsection!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Total Revenue</label>
-            <kendo-numerictextbox [(value)]="record.TotalRevenue" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.TotalRevenue!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Information Technology Expense</label>
-            <kendo-numerictextbox [(value)]="record.InformationTechnologyExpense" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.InformationTechnologyExpense!" ></kendo-numerictextbox>   
         </div> 
     </div>
     <div *ngIf="!this.EditMode" class="record-form">

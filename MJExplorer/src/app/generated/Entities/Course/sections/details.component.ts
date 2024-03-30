@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { CourseEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Courses.details') // Tell MemberJunction about this class 
@@ -28,19 +28,19 @@ import { CourseEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">End Date</label>
-            <kendo-datepicker [(value)]="record.EndDate" ></kendo-datepicker>   
+            <kendo-datepicker [(value)]="record.EndDate!" ></kendo-datepicker>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Member Price</label>
-            <kendo-numerictextbox [(value)]="record.MemberPrice" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.MemberPrice!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Non Member Price</label>
-            <kendo-numerictextbox [(value)]="record.NonMemberPrice" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.NonMemberPrice!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Instructor ID</label>
-            <kendo-numerictextbox [(value)]="record.InstructorID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.InstructorID!" ></kendo-numerictextbox>   
         </div> 
     </div>
     <div *ngIf="!this.EditMode" class="record-form">

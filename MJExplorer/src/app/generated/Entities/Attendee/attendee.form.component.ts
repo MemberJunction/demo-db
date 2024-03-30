@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AttendeeEntity } from 'mj_generatedentities';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormComponent } from '@memberjunction/ng-base-forms';
 import { LoadAttendeeDetailsComponent } from "./sections/details.component"
 @RegisterClass(BaseFormComponent, 'Attendees') // Tell MemberJunction about this class
 @Component({

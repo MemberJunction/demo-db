@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { AttendeeEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Attendees.details') // Tell MemberJunction about this class 
@@ -16,7 +16,7 @@ import { AttendeeEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Organization ID</label>
-            <kendo-numerictextbox [(value)]="record.OrganizationID" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.OrganizationID!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Email</label>

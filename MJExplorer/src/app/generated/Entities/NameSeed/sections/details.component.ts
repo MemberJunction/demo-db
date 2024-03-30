@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { NameSeedEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Name Seeds.details') // Tell MemberJunction about this class 
@@ -20,7 +20,7 @@ import { NameSeedEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Name Type</label>
-            <kendo-textbox [(ngModel)]="record.NameType"  />   
+            <kendo-dropdownlist [data]="['Middle', 'Last', 'First']" [(ngModel)]="record.NameType!" ></kendo-dropdownlist>   
         </div> 
     </div>
     <div *ngIf="!this.EditMode" class="record-form">

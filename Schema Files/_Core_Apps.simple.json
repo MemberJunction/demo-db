@@ -71,7 +71,7 @@
     },
     { 
         "Name": "Events",
-        "Description": "",
+        "Description": "Listing of all past, present, and future events",
         "BaseView": "vwEvents", 
         "Fields": ["EventID","EventName","Location","Description","StartDate","EndDate","Address","City","State","Zip","Country","EventType","MemberPrice","NonMemberPrice","SpeakerPrice"]
     },

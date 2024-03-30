@@ -12,8 +12,9 @@ import { HttpClientModule } from '@angular/common/http'
 // MJ 
 //***********************************************************
 import { ExplorerCoreModule } from '@memberjunction/ng-explorer-core';
-import { CoreGeneratedFormsModule, LoadCoreGeneratedForms } from '@memberjunction/ng-core-entity-forms';
-LoadCoreGeneratedForms(); // prevent tree shaking
+import { CoreGeneratedFormsModule, LoadCoreGeneratedForms, LoadCoreCustomForms } from '@memberjunction/ng-core-entity-forms';
+LoadCoreGeneratedForms(); // prevent tree shaking - dynamic loaded components don't have a static code path to them so Webpack will tree shake them out
+LoadCoreCustomForms(); // prevent tree shaking - dynamic loaded components don't have a static code path to them so Webpack will tree shake them out
 
 import { MJAuthBase, MJAuth0Provider, MJMSALProvider } from '@memberjunction/ng-auth-services';
 import { UserViewGridModule } from '@memberjunction/ng-user-view-grid';
@@ -65,6 +66,7 @@ import { GeneratedFormsModule, LoadGeneratedForms } from './generated/generated-
 import { environment } from 'src/environments/environment';
 import 'hammerjs';
 import { RouteReuseStrategy } from '@angular/router';
+import { ExplorerSettingsModule } from '@memberjunction/ng-explorer-settings';
 LoadGeneratedForms(); // prevent tree shaking and component loss through this call
 LoadResourceWrappers(); // prevent tree shaking and component loss through this call
 
@@ -104,6 +106,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     DialogsModule,
     FilterModule,
     UserViewGridModule,
+    ExplorerSettingsModule,
     LinkDirectivesModule,
     ContainerDirectivesModule,
     ExplorerCoreModule,

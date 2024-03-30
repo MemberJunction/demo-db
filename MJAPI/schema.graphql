@@ -3,6 +3,7 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""List of all actions that are possible across all AI Models"""
 type AIAction_ {
   AIModelActionsArray: [AIModelAction_!]!
   CreatedAt: Timestamp!
@@ -17,6 +18,7 @@ type AIAction_ {
   UpdatedAt: Timestamp!
 }
 
+"""Tracks the actions supported by each AI Model"""
 type AIModelAction_ {
   AIAction: String!
   AIActionID: Int!
@@ -28,6 +30,7 @@ type AIModelAction_ {
   UpdatedAt: Timestamp!
 }
 
+"""Types of AI Models"""
 type AIModelType_ {
   AIModelsArray: [AIModel_!]!
   Description: String
@@ -35,6 +38,7 @@ type AIModelType_ {
   Name: String!
 }
 
+"""Catalog of all AI Models configured in the system."""
 type AIModel_ {
   AIActionsArray: [AIAction_!]!
   AIModelActionsArray: [AIModelAction_!]!
@@ -52,6 +56,9 @@ type AIModel_ {
   Vendor: String
 }
 
+"""
+List of entities within each application. An application can have any number of entities and an entity can be part of any number of applications.
+"""
 type ApplicationEntity_ {
   Application: String!
   ApplicationName: String
@@ -68,6 +75,9 @@ type ApplicationEntity_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+Applications are used to group entities in the user interface for ease of user access
+"""
 type Application_ {
   ApplicationEntitiesArray: [ApplicationEntity_!]!
   CreatedAt: Timestamp!
@@ -234,6 +244,7 @@ type CompanyIntegrationRun_ {
   TotalRecords: Int!
 }
 
+"""Links individual company records to specific integrations"""
 type CompanyIntegration_ {
   APIKey: String
   AccessToken: String
@@ -265,6 +276,9 @@ type CompanyIntegration_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+A list of organizational units within your business. These can be subsidiaries or divisions or other units. Companies are used to organizae employee records and also for separating integrations if you have multiple integrations of the same type of system.
+"""
 type Company_ {
   CompanyIntegrationsArray: [CompanyIntegration_!]!
   CreatedAt: Timestamp!
@@ -377,13 +391,16 @@ input CreateApplicationEntityInput {
   ApplicationName: String
   DefaultForNewUser: Boolean!
   EntityID: Int!
-  ID: Int!
   Sequence: Int!
+}
+
+input CreateApplicationInput {
+  Description: String
+  Name: String!
 }
 
 input CreateAttendeeInput {
   Address: String
-  AttendeeID: Int!
   City: String
   Country: String
   Email: String!
@@ -408,7 +425,6 @@ input CreateAuditLogInput {
 
 input CreateAuthorInput {
   Address: String
-  AuthorID: Int!
   City: String
   CompanyID: Int
   Country: String
@@ -438,7 +454,6 @@ input CreateCompanyIntegrationRecordMapInput {
 input CreateCompany__communityInput {
   Address: String
   City: String
-  CompanyID: Int!
   CompanyName: String!
   Country: String
   Industry: String
@@ -451,7 +466,6 @@ input CreateCompany__communityInput {
 input CreateCompany__educationInput {
   Address: String
   City: String
-  CompanyID: Int!
   CompanyName: String!
   Country: String
   Industry: String
@@ -464,7 +478,6 @@ input CreateCompany__educationInput {
 input CreateCompany__membershipInput {
   Address: String
   City: String
-  CompanyID: Int!
   CompanyName: String!
   Country: String
   Industry: String
@@ -500,7 +513,6 @@ input CreateConversationInput {
 }
 
 input CreateCourseInput {
-  CourseID: Int!
   CourseName: String!
   Description: String
   EndDate: Timestamp
@@ -512,7 +524,6 @@ input CreateCourseInput {
 
 input CreateDashboardCategoryInput {
   Description: String
-  ID: Int!
   Name: String!
   ParentID: Int
 }
@@ -649,7 +660,6 @@ input CreateEntityPermissionInput {
   CreateRLSFilterID: Int
   DeleteRLSFilterID: Int
   EntityID: Int!
-  ID: Int!
   ReadRLSFilterID: Int
   RoleName: String
   UpdateRLSFilterID: Int
@@ -677,6 +687,7 @@ input CreateEntityRelationshipInput {
   JoinView: String
   RelatedEntityID: Int!
   RelatedEntityJoinField: String!
+  Sequence: Int!
   Type: String!
 }
 
@@ -686,7 +697,6 @@ input CreateEventInput {
   Country: String
   Description: String
   EndDate: Timestamp
-  EventID: Int!
   EventName: String!
   EventType: String
   Location: String
@@ -698,10 +708,45 @@ input CreateEventInput {
   Zip: String
 }
 
+input CreateFileCategoryInput {
+  Description: String
+  Name: String!
+  ParentID: Int
+}
+
+input CreateFileEntityRecordLinkInput {
+  EntityID: Int!
+  FileID: Int!
+  RecordID: String!
+}
+
+input CreateFileInput {
+  CategoryID: Int
+  ContentType: String
+  Description: String
+  Name: String!
+  ProviderID: Int!
+  ProviderKey: String
+  Status: String!
+}
+
+type CreateFilePayload {
+  File: File_!
+  UploadUrl: String!
+}
+
+input CreateFileStorageProviderInput {
+  ClientDriverKey: String!
+  Description: String
+  IsActive: Boolean!
+  Name: String!
+  Priority: Int!
+  ServerDriverKey: String!
+}
+
 input CreateForumInput {
   CreationDate: Timestamp!
   Description: String
-  ForumID: Int!
   Title: String!
 }
 
@@ -709,17 +754,14 @@ input CreateInstructorInput {
   Bio: String
   Email: String
   FirstName: String
-  InstructorID: Int!
   LastName: String
 }
 
 input CreateJobTitleSeedInput {
   JobTitle: String
-  JobTitleID: Int!
 }
 
 input CreateListDetailInput {
-  ID: Int!
   ListID: Int!
   RecordID: String!
   Sequence: Int!
@@ -730,7 +772,6 @@ input CreateListInput {
   Description: String
   EntityID: Int
   ExternalSystemRecordID: String
-  ID: Int!
   Name: String!
   UserID: Int!
 }
@@ -742,14 +783,12 @@ input CreateMemberInput {
   JobTitle: String
   JoinDate: Timestamp!
   LastName: String
-  MemberID: Int!
   MemberTypeID: Int!
 }
 
 input CreateMemberTypeInput {
   AnnualDues: Float
   Description: String
-  MemberTypeID: Int!
   TypeName: String!
 }
 
@@ -758,12 +797,10 @@ input CreateMembershipRenewalInput {
   PaymentAmount: Float
   PaymentStatus: String
   RenewalDate: Timestamp!
-  RenewalID: Int!
 }
 
 input CreateNameSeedInput {
   Name: String
-  NameID: Int!
   NameType: String
 }
 
@@ -772,7 +809,6 @@ input CreateOrganizationInput {
   City: String
   Country: String
   Industry: String
-  OrganizationID: Int!
   OrganizationName: String!
   Size: String
   State: String
@@ -785,7 +821,6 @@ input CreateOrganizationLinkInput {
   EducationCompanyID: Int
   EventsOrganizationID: Int
   MembershipCompanyID: Int
-  OrganizationLinkID: Int!
 }
 
 input CreatePersonLinkInput {
@@ -793,7 +828,6 @@ input CreatePersonLinkInput {
   EducationStudentID: Int
   EventsAttendeeID: Int
   MembershipMemberID: Int
-  PersonLinkID: Int!
 }
 
 input CreatePostInput {
@@ -801,12 +835,10 @@ input CreatePostInput {
   ForumID: Int!
   PostContent: String
   PostDate: Timestamp!
-  PostID: Int!
 }
 
 input CreatePostSeedInput {
   Content: String
-  PostSeedID: Int!
   Type: String
 }
 
@@ -832,7 +864,7 @@ input CreateQueryFieldInput {
 }
 
 input CreateQueryInput {
-  CategoryID: Int!
+  CategoryID: Int
   Description: String
   Feedback: String
   Name: String!
@@ -917,7 +949,6 @@ input CreateRegistrationInput {
   PaymentStatus: String
   RegistrationDate: Timestamp!
   RegistrationFee: Float
-  RegistrationID: Int!
   StudentID: Int!
 }
 
@@ -927,7 +958,6 @@ input CreateRegistration__eventsInput {
   PaymentStatus: String
   RegistrationDate: Timestamp!
   RegistrationFee: Float
-  RegistrationID: Int!
   RegistrationType: String
   Status: String
 }
@@ -937,18 +967,16 @@ input CreateReplyInput {
   PostID: Int!
   ReplyContent: String
   ReplyDate: Timestamp!
-  ReplyID: Int!
 }
 
 input CreateReplySeedInput {
   Content: String
-  ReplySeedID: Int!
 }
 
 input CreateReportCategoryInput {
   Description: String
   Name: String!
-  ParentID: Int!
+  ParentID: Int
 }
 
 input CreateReportInput {
@@ -983,6 +1011,13 @@ input CreateReportSnapshotInput {
   UserID: Int
 }
 
+input CreateRoleInput {
+  Description: String
+  DirectoryID: String
+  Name: String!
+  SQLName: String
+}
+
 input CreateSchemaInfoInput {
   Comments: String
   EntityIDMax: Int!
@@ -1000,13 +1035,11 @@ input CreateStudentInput {
   JobTitle: String
   LastName: String
   State: String
-  StudentID: Int!
   ZipCode: String
 }
 
 input CreateUserApplicationEntityInput {
   EntityID: Int!
-  ID: Int!
   Sequence: Int!
   UserApplicationID: Int!
 }
@@ -1049,6 +1082,7 @@ input CreateUserRoleInput {
 
 input CreateUserViewCategoryInput {
   Description: String
+  EntityID: Int!
   Name: String!
   ParentID: Int
 }
@@ -1074,13 +1108,11 @@ input CreateUserViewInput {
 }
 
 input CreateUserViewRunDetailInput {
-  ID: Int!
   RecordID: String!
   UserViewRunID: Int!
 }
 
 input CreateUserViewRunInput {
-  ID: Int!
   RunAt: Timestamp!
   RunByUserID: Int!
   UserViewID: Int!
@@ -1098,6 +1130,17 @@ input CreateVectorIndexInput {
   EmbeddingModelID: Int!
   Name: String!
   VectorDatabaseID: Int!
+}
+
+input CreateVersionInstallationInput {
+  Comments: String
+  InstallLog: String
+  InstalledAt: Timestamp!
+  MajorVersion: Int!
+  MinorVersion: Int!
+  PatchVersion: Int!
+  Status: String!
+  Type: String
 }
 
 input CreateWorkspaceInput {
@@ -1128,6 +1171,9 @@ type DashboardCategory_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+Dashboards are used to group resources into a single display pane for an end-user
+"""
 type Dashboard_ {
   Category: String
   CategoryID: Int
@@ -1208,6 +1254,7 @@ input DatasetItemFilterTypeGQL {
   ItemCode: String!
 }
 
+"""A single item in a Dataset and can be sourced from multiple methods."""
 type DatasetItem_ {
   Code: String!
   CreatedAt: Timestamp!
@@ -1240,6 +1287,7 @@ type DatasetStatusResultType {
   Success: Boolean!
 }
 
+"""Cacheable sets of data that can span one or more items"""
 type Dataset_ {
   CreatedAt: Timestamp!
   DatasetItemsArray: [DatasetItem_!]!
@@ -1277,6 +1325,7 @@ type EmployeeSkill_ {
   UpdatedAt: Timestamp!
 }
 
+"""A list of employees across all units of your organization"""
 type Employee_ {
   Active: Boolean!
   BCMID: String!
@@ -1301,6 +1350,9 @@ type Employee_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+Tracks the AI actions that should be invoked based on changes to records within a given entity.
+"""
 type EntityAIAction_ {
   AIAction: String!
   AIActionID: Int!
@@ -1368,6 +1420,7 @@ type EntityFieldValue_ {
   CreatedAt: Timestamp!
   Description: String
   Entity: String!
+  EntityField: String!
   EntityFieldName: String!
   EntityID: Int!
   ID: Int!
@@ -1376,6 +1429,7 @@ type EntityFieldValue_ {
   Value: String!
 }
 
+"""List of all fields within each entity with metadata about each field"""
 type EntityField_ {
   AllowUpdateAPI: Boolean!
   AllowUpdateInView: Boolean!
@@ -1433,6 +1487,7 @@ type EntityField_ {
   ViewCellTemplate: String
 }
 
+"""Security settings for each entity"""
 type EntityPermission_ {
   CanCreate: Boolean!
   CanDelete: Boolean!
@@ -1449,7 +1504,7 @@ type EntityPermission_ {
   ReadRLSFilter: String
   ReadRLSFilterID: Int
   RoleName: String
-  RoleSQLName: String!
+  RoleSQLName: String
   UpdateRLSFilter: String
   UpdateRLSFilterID: Int
   UpdatedAt: Timestamp!
@@ -1481,6 +1536,9 @@ type EntityRecordNameResult {
   Success: Boolean!
 }
 
+"""
+Metadata about relationships between entities including display preferences for the UI
+"""
 type EntityRelationship_ {
   BundleInAPI: Boolean!
   CreatedAt: Timestamp!
@@ -1507,10 +1565,16 @@ type EntityRelationship_ {
   RelatedEntityCodeName: String
   RelatedEntityID: Int!
   RelatedEntityJoinField: String!
+
+  """
+  Used for display order in generated forms and in other places in the UI where relationships for an entity are shown
+  """
+  Sequence: Int!
   Type: String!
   UpdatedAt: Timestamp!
 }
 
+"""Catalog of all entities across all schemas"""
 type Entity_ {
   AllowAllRowsAPI: Boolean!
   AllowCreateAPI: Boolean!
@@ -1550,6 +1614,7 @@ type Entity_ {
   EntityPermissionsArray: [EntityPermission_!]!
   EntityRecordDocumentsArray: [EntityRecordDocument_!]!
   EntityRelationshipsArray: [EntityRelationship_!]!
+  FileEntityRecordLinksArray: [FileEntityRecordLink_!]!
   FullTextCatalog: String
   FullTextCatalogGenerated: Boolean!
   FullTextIndex: String
@@ -1604,6 +1669,7 @@ type ErrorLog_ {
   Status: String
 }
 
+"""Listing of all past, present, and future events"""
 type Event_ {
   Address: String
   City: String
@@ -1633,6 +1699,61 @@ type FieldMappingOutput {
   Value: String!
 }
 
+type FileCategory_ {
+  CreatedAt: Timestamp!
+  Description: String
+  FileCategoriesArray: [FileCategory_!]!
+  FilesArray: [File_!]!
+  ID: Int!
+  Name: String!
+  Parent: String
+  ParentID: Int
+  UpdatedAt: Timestamp!
+}
+
+type FileEntityRecordLink_ {
+  CreatedAt: Timestamp!
+  Entity: String!
+  EntityID: Int!
+  File: String!
+  FileID: Int!
+  ID: Int!
+  RecordID: String!
+  UpdatedAt: Timestamp!
+}
+
+type FileStorageProvider_ {
+  ClientDriverKey: String!
+  CreatedAt: Timestamp!
+  Description: String
+  FilesArray: [File_!]!
+  ID: Int!
+  IsActive: Boolean!
+  Name: String!
+  Priority: Int!
+  ServerDriverKey: String!
+  UpdatedAt: Timestamp!
+}
+
+type File_ {
+  Category: String
+  CategoryID: Int
+  ContentType: String
+  CreatedAt: Timestamp!
+  Description: String
+  DownloadUrl: String!
+  FileEntityRecordLinksArray: [FileEntityRecordLink_!]!
+  ID: Int!
+  Name: String!
+  Provider: String!
+  ProviderID: Int!
+  ProviderKey: String
+
+  """Pending, Uploading, Uploaded, Deleting, Deleted"""
+  Status: String!
+  UpdatedAt: Timestamp!
+}
+
 type Forum_ {
   CreationDate: Timestamp!
   Description: String
@@ -1650,6 +1771,9 @@ type Instructor_ {
   LastName: String
 }
 
+"""
+Used to generate web links for end users to easily access resources in a source system. URL Formats support templating to inject various field values at run-time to take a user directly to a resource in a source system.
+"""
 type IntegrationURLFormat_ {
   EntityID: Int!
   FullURLFormat: String
@@ -1661,6 +1785,7 @@ type IntegrationURLFormat_ {
   URLFormat: String!
 }
 
+"""Catalog of all integrations that have been configured in the system."""
 type Integration_ {
   BatchMaxRequestCount: Int!
   BatchRequestWaitTime: Int!
@@ -1681,6 +1806,7 @@ type JobTitleSeed_ {
   JobTitleID: Int!
 }
 
+"""Tracks the records within each list."""
 type ListDetail_ {
   ID: Int!
   ListID: Int!
@@ -1688,6 +1814,9 @@ type ListDetail_ {
   Sequence: Int!
 }
 
+"""
+Static lists are useful for controlling a set of data for a given entity. These can be used programatically for applications like logging and tracking long-running tasks and also by end users for tracking any particular list of records they want to directly control the set.
+"""
 type List_ {
   CompanyIntegrationID: Int
   CreatedAt: Timestamp!
@@ -1735,6 +1864,7 @@ type MembershipRenewal_ {
 }
 
 type Mutation {
+  CreateApplication(input: CreateApplicationInput!): Application_!
   CreateApplicationEntity(input: CreateApplicationEntityInput!): ApplicationEntity_!
   CreateAttendee(input: CreateAttendeeInput!): Attendee_!
   CreateAuditLog(input: CreateAuditLogInput!): AuditLog_!
@@ -1761,6 +1891,10 @@ type Mutation {
   CreateEntityRecordDocument(input: CreateEntityRecordDocumentInput!): EntityRecordDocument_!
   CreateEntityRelationship(input: CreateEntityRelationshipInput!): EntityRelationship_!
   CreateEvent(input: CreateEventInput!): Event_!
+  CreateFile(input: CreateFileInput!): CreateFilePayload!
+  CreateFileCategory(input: CreateFileCategoryInput!): FileCategory_!
+  CreateFileEntityRecordLink(input: CreateFileEntityRecordLinkInput!): FileEntityRecordLink_!
+  CreateFileStorageProvider(input: CreateFileStorageProviderInput!): FileStorageProvider_!
   CreateForum(input: CreateForumInput!): Forum_!
   CreateInstructor(input: CreateInstructorInput!): Instructor_!
   CreateJobTitleSeed(input: CreateJobTitleSeedInput!): JobTitleSeed_!
@@ -1792,6 +1926,7 @@ type Mutation {
   CreateReportCategory(input: CreateReportCategoryInput!): ReportCategory_!
   CreateReportFromConversationDetailID(ConversationDetailID: Int!): CreateReportResultType!
   CreateReportSnapshot(input: CreateReportSnapshotInput!): ReportSnapshot_!
+  CreateRole(input: CreateRoleInput!): Role_!
   CreateSchemaInfo(input: CreateSchemaInfoInput!): SchemaInfo_!
   CreateStudent(input: CreateStudentInput!): Student_!
   CreateUser(input: CreateUserInput!): User_!
@@ -1805,25 +1940,38 @@ type Mutation {
   CreateUserViewRunDetail(input: CreateUserViewRunDetailInput!): UserViewRunDetail_!
   CreateVectorDatabase(input: CreateVectorDatabaseInput!): VectorDatabase_!
   CreateVectorIndex(input: CreateVectorIndexInput!): VectorIndex_!
+  CreateVersionInstallation(input: CreateVersionInstallationInput!): VersionInstallation_!
   CreateWorkspace(input: CreateWorkspaceInput!): Workspace_!
   CreateWorkspaceItem(input: CreateWorkspaceItemInput!): WorkspaceItem_!
+  DeleteApplication(ID: Int!): Application_!
   DeleteApplicationEntity(ID: Int!): ApplicationEntity_!
   DeleteCompany(ID: Int!): Company_!
   DeleteConversation(ID: Int!): Conversation_!
   DeleteConversationDetail(ID: Int!): ConversationDetail_!
   DeleteDashboard(ID: Int!): Dashboard_!
+  DeleteDashboardCategory(ID: Int!): DashboardCategory_!
   DeleteEmployee(ID: Int!): Employee_!
   DeleteEntity(ID: Int!): Entity_!
   DeleteEntityField(ID: Int!): EntityField_!
   DeleteEntityPermission(ID: Int!): EntityPermission_!
   DeleteEntityRelationship(ID: Int!): EntityRelationship_!
+  DeleteFile(ID: Int!): File_!
+  DeleteFileCategory(ID: Int!): FileCategory_!
   DeleteList(ID: Int!): List_!
   DeleteListDetail(ID: Int!): ListDetail_!
+  DeleteQueryCategory(ID: Int!): QueryCategory_!
   DeleteReport(ID: Int!): Report_!
+  DeleteReportCategory(ID: Int!): ReportCategory_!
   DeleteReportSnapshot(ID: Int!): ReportSnapshot_!
+  DeleteRole(ID: Int!): Role_!
+  DeleteUser(ID: Int!): User_!
+  DeleteUserApplication(ID: Int!): UserApplication_!
   DeleteUserApplicationEntity(ID: Int!): UserApplicationEntity_!
   DeleteUserFavorite(ID: Int!): UserFavorite_!
+  DeleteUserNotification(ID: Int!): UserNotification_!
+  DeleteUserRole(ID: Int!): UserRole_!
   DeleteUserView(ID: Int!): UserView_!
+  DeleteUserViewCategory(ID: Int!): UserViewCategory_!
   DeleteWorkspace(ID: Int!): Workspace_!
   DeleteWorkspaceItem(ID: Int!): WorkspaceItem_!
   MergeRecords(request: RecordMergeRequest!): RecordMergeResult!
@@ -1868,6 +2016,10 @@ type Mutation {
   UpdateEntityRelationship(input: UpdateEntityRelationshipInput!): EntityRelationship_!
   UpdateErrorLog(input: UpdateErrorLogInput!): ErrorLog_!
   UpdateEvent(input: UpdateEventInput!): Event_!
+  UpdateFile(input: UpdateFileInput!): File_!
+  UpdateFileCategory(input: UpdateFileCategoryInput!): FileCategory_!
+  UpdateFileEntityRecordLink(input: UpdateFileEntityRecordLinkInput!): FileEntityRecordLink_!
+  UpdateFileStorageProvider(input: UpdateFileStorageProviderInput!): FileStorageProvider_!
   UpdateForum(input: UpdateForumInput!): Forum_!
   UpdateInstructor(input: UpdateInstructorInput!): Instructor_!
   UpdateIntegration(input: UpdateIntegrationInput!): Integration_!
@@ -1914,6 +2066,7 @@ type Mutation {
   UpdateUserViewRunDetail(input: UpdateUserViewRunDetailInput!): UserViewRunDetail_!
   UpdateVectorDatabase(input: UpdateVectorDatabaseInput!): VectorDatabase_!
   UpdateVectorIndex(input: UpdateVectorIndexInput!): VectorIndex_!
+  UpdateVersionInstallation(input: UpdateVersionInstallationInput!): VersionInstallation_!
   UpdateWorkflow(input: UpdateWorkflowInput!): Workflow_!
   UpdateWorkflowEngine(input: UpdateWorkflowEngineInput!): WorkflowEngine_!
   UpdateWorkflowRun(input: UpdateWorkflowRunInput!): WorkflowRun_!
@@ -1986,12 +2139,7 @@ type PersonLink_ {
   EducationStudentID: Int
   EventsAttendeeID: Int
   MembershipMemberID: Int
-  MembershipRenewalsArray: [MembershipRenewal_!]!
   PersonLinkID: Int!
-  PostsArray: [Post_!]!
-  RegistrationsArray: [Registration_!]!
-  Registrations__eventsArray: [Registration__events_!]!
-  RepliesArray: [Reply_!]!
   UpdatedAt: Timestamp!
 }
 
@@ -2122,6 +2270,10 @@ type Query {
   Event(EventID: Int!): Event_
   ExecuteAskSkipAnalysisQuery(ConversationId: Int!, DataContextId: Int, UserQuestion: String!): AskSkipResultType!
   ExecuteAskSkipRunScript(DataContextId: Int!, ScriptText: String!): AskSkipResultType!
+  File(ID: Int!): File_
+  FileCategory(ID: Int!): FileCategory_
+  FileEntityRecordLink(ID: Int!): FileEntityRecordLink_
+  FileStorageProvider(ID: Int!): FileStorageProvider_
   Forum(ForumID: Int!): Forum_
   GetDatasetByName(DatasetName: String!, ItemFilters: [DatasetItemFilterTypeGQL]): DatasetResultType!
   GetDatasetStatusByName(DatasetName: String!, ItemFilters: [DatasetItemFilterTypeGQL]): DatasetStatusResultType!
@@ -2310,6 +2462,18 @@ type Query {
   RunEventDynamicView(input: RunDynamicViewInput!): RunEventViewResult!
   RunEventViewByID(input: RunViewByIDInput!): RunEventViewResult!
   RunEventViewByName(input: RunViewByNameInput!): RunEventViewResult!
+  RunFileCategoryDynamicView(input: RunDynamicViewInput!): RunFileCategoryViewResult!
+  RunFileCategoryViewByID(input: RunViewByIDInput!): RunFileCategoryViewResult!
+  RunFileCategoryViewByName(input: RunViewByNameInput!): RunFileCategoryViewResult!
+  RunFileDynamicView(input: RunDynamicViewInput!): RunFileViewResult!
+  RunFileEntityRecordLinkDynamicView(input: RunDynamicViewInput!): RunFileEntityRecordLinkViewResult!
+  RunFileEntityRecordLinkViewByID(input: RunViewByIDInput!): RunFileEntityRecordLinkViewResult!
+  RunFileEntityRecordLinkViewByName(input: RunViewByNameInput!): RunFileEntityRecordLinkViewResult!
+  RunFileStorageProviderDynamicView(input: RunDynamicViewInput!): RunFileStorageProviderViewResult!
+  RunFileStorageProviderViewByID(input: RunViewByIDInput!): RunFileStorageProviderViewResult!
+  RunFileStorageProviderViewByName(input: RunViewByNameInput!): RunFileStorageProviderViewResult!
+  RunFileViewByID(input: RunViewByIDInput!): RunFileViewResult!
+  RunFileViewByName(input: RunViewByNameInput!): RunFileViewResult!
   RunForumDynamicView(input: RunDynamicViewInput!): RunForumViewResult!
   RunForumViewByID(input: RunViewByIDInput!): RunForumViewResult!
   RunForumViewByName(input: RunViewByNameInput!): RunForumViewResult!
@@ -2481,6 +2645,9 @@ type Query {
   RunVectorIndexDynamicView(input: RunDynamicViewInput!): RunVectorIndexViewResult!
   RunVectorIndexViewByID(input: RunViewByIDInput!): RunVectorIndexViewResult!
   RunVectorIndexViewByName(input: RunViewByNameInput!): RunVectorIndexViewResult!
+  RunVersionInstallationDynamicView(input: RunDynamicViewInput!): RunVersionInstallationViewResult!
+  RunVersionInstallationViewByID(input: RunViewByIDInput!): RunVersionInstallationViewResult!
+  RunVersionInstallationViewByName(input: RunViewByNameInput!): RunVersionInstallationViewResult!
   RunViewByID(input: RunViewByIDInput!): RunViewResult!
   RunViewByName(input: RunViewByNameInput!): RunViewResult!
   RunWorkflowDynamicView(input: RunDynamicViewInput!): RunWorkflowViewResult!
@@ -2523,6 +2690,7 @@ type Query {
   UserViewsByUserID(UserID: Int!): [UserView_!]!
   VectorDatabase(ID: Int!): VectorDatabase_
   VectorIndex(ID: Int!): VectorIndex_
+  VersionInstallation(ID: Int!): VersionInstallation_
   Workflow(ID: Int!): Workflow_
   WorkflowEngine(ID: Int!): WorkflowEngine_
   WorkflowRun(ID: Int!): WorkflowRun_
@@ -2579,9 +2747,12 @@ type QueryPermission_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+Catalog of stored queries. This is useful for any arbitrary query that is known to be performant and correct and can be reused. Queries can be viewed/run by a user, used programatically via RunQuery, and also used by AI systems for improved reliability instead of dynamically generated SQL. Queries can also improve security since they store the SQL instead of using dynamic SQL.
+"""
 type Query_ {
-  Category: String!
-  CategoryID: Int!
+  Category: String
+  CategoryID: Int
   CreatedAt: Timestamp!
   DataContextItemsArray: [DataContextItem_!]!
   Description: String
@@ -2620,6 +2791,7 @@ type QueueType_ {
   QueuesArray: [Queue_!]!
 }
 
+"""Queues can be used to async execute long running tasks"""
 type Queue_ {
   CreatedAt: Timestamp!
   Description: String
@@ -2644,6 +2816,9 @@ type Queue_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+For entities that have TrackRecordChanges=1, Record Changes will store the history of all changes made within the system. For integrations you can directly add values here if you have inbound signals indicating records were changed in a source system. This entity only automatically captures Record Changes if they were made within the system.
+"""
 type RecordChange_ {
   ChangedAt: Timestamp!
   ChangesDescription: String!
@@ -2774,8 +2949,8 @@ type ReportCategory_ {
   Description: String
   ID: Int!
   Name: String!
-  Parent: String!
-  ParentID: Int!
+  Parent: String
+  ParentID: Int
   ReportCategoriesArray: [ReportCategory_!]!
   ReportsArray: [Report_!]!
   UpdatedAt: Timestamp!
@@ -2835,17 +3010,30 @@ type ResourceType_ {
   WorkspaceItemsArray: [WorkspaceItem_!]!
 }
 
+"""
+Roles are used for security administration and can have zero to many Users as members
+"""
 type Role_ {
   AuthorizationRolesArray: [AuthorizationRole_!]!
-  AzureID: String
   CreatedAt: Timestamp!
+
+  """Description of the role"""
   Description: String
+
+  """
+  The unique ID of the role in the directory being used for authentication, for example an ID in Azure.
+  """
+  DirectoryID: String
   EmployeeRolesArray: [EmployeeRole_!]!
   EntityPermissionsArray: [EntityPermission_!]!
   ID: Int!
   Name: String!
   QueryPermissionsArray: [QueryPermission_!]!
-  SQLName: String!
+
+  """
+  The name of the role in the database, this is used for auto-generating permission statements by CodeGen
+  """
+  SQLName: String
   UpdatedAt: Timestamp!
   UserRolesArray: [UserRole_!]!
 }
@@ -3358,6 +3546,46 @@ type RunEventViewResult {
   ErrorMessage: String
   ExecutionTime: Int
   Results: [Event_!]!
+  RowCount: Int
+  Success: Boolean!
+  TotalRowCount: Int
+  UserViewRunID: Int
+}
+
+type RunFileCategoryViewResult {
+  ErrorMessage: String
+  ExecutionTime: Int
+  Results: [FileCategory_!]!
+  RowCount: Int
+  Success: Boolean!
+  TotalRowCount: Int
+  UserViewRunID: Int
+}
+
+type RunFileEntityRecordLinkViewResult {
+  ErrorMessage: String
+  ExecutionTime: Int
+  Results: [FileEntityRecordLink_!]!
+  RowCount: Int
+  Success: Boolean!
+  TotalRowCount: Int
+  UserViewRunID: Int
+}
+
+type RunFileStorageProviderViewResult {
+  ErrorMessage: String
+  ExecutionTime: Int
+  Results: [FileStorageProvider_!]!
+  RowCount: Int
+  Success: Boolean!
+  TotalRowCount: Int
+  UserViewRunID: Int
+}
+
+type RunFileViewResult {
+  ErrorMessage: String
+  ExecutionTime: Int
+  Results: [File_!]!
   RowCount: Int
   Success: Boolean!
   TotalRowCount: Int
@@ -3952,6 +4180,16 @@ type RunVectorIndexViewResult {
   UserViewRunID: Int
 }
 
+type RunVersionInstallationViewResult {
+  ErrorMessage: String
+  ExecutionTime: Int
+  Results: [VersionInstallation_!]!
+  RowCount: Int
+  Success: Boolean!
+  TotalRowCount: Int
+  UserViewRunID: Int
+}
+
 input RunViewByIDInput {
   """
   if provided and either ForceAuditLog is set, or the entity's property settings for logging view runs are set to true, this will be used as the Audit Log Description.
@@ -4126,6 +4364,9 @@ type RunWorkspaceViewResult {
   UserViewRunID: Int
 }
 
+"""
+Tracks the schemas in the system and the ID ranges that are valid for entities within each schema.
+"""
 type SchemaInfo_ {
   Comments: String
   CreatedAt: Timestamp!
@@ -4136,6 +4377,9 @@ type SchemaInfo_ {
   UpdatedAt: Timestamp!
 }
 
+"""
+A hierarchical list of possible skills that are linked to Employees and can also be linked to any other entity
+"""
 type Skill_ {
   CreatedAt: Timestamp!
   EmployeeSkillsArray: [EmployeeSkill_!]!
@@ -4177,6 +4421,9 @@ type Subscription {
   statusUpdates(sessionId: String!): PushStatusNotification!
 }
 
+"""
+Tags are used to arbitrarily associate any record in any entity with addtional information.
+"""
 type Tag_ {
   Description: String
   DisplayName: String!
@@ -4188,6 +4435,7 @@ type Tag_ {
   TagsArray: [Tag_!]!
 }
 
+"""Tracks the links between any record in any entity with Tags"""
 type TaggedItem_ {
   Entity: String!
   EntityID: Int!
@@ -4642,6 +4890,7 @@ input UpdateEntityRelationshipInput {
   JoinView: String
   RelatedEntityID: Int!
   RelatedEntityJoinField: String!
+  Sequence: Int!
   Type: String!
 }
 
@@ -4673,6 +4922,41 @@ input UpdateEventInput {
   StartDate: Timestamp
   State: String
   Zip: String
+}
+
+input UpdateFileCategoryInput {
+  Description: String
+  ID: Int!
+  Name: String!
+  ParentID: Int
+}
+
+input UpdateFileEntityRecordLinkInput {
+  EntityID: Int!
+  FileID: Int!
+  ID: Int!
+  RecordID: String!
+}
+
+input UpdateFileInput {
+  CategoryID: Int
+  ContentType: String
+  Description: String
+  ID: Int!
+  Name: String!
+  ProviderID: Int!
+  ProviderKey: String
+  Status: String!
+}
+
+input UpdateFileStorageProviderInput {
+  ClientDriverKey: String!
+  Description: String
+  ID: Int!
+  IsActive: Boolean!
+  Name: String!
+  Priority: Int!
+  ServerDriverKey: String!
 }
 
 input UpdateForumInput {
@@ -4829,7 +5113,7 @@ input UpdateQueryFieldInput {
 }
 
 input UpdateQueryInput {
-  CategoryID: Int!
+  CategoryID: Int
   Description: String
   Feedback: String
   ID: Int!
@@ -4940,7 +5224,7 @@ input UpdateReportCategoryInput {
   Description: String
   ID: Int!
   Name: String!
-  ParentID: Int!
+  ParentID: Int
 }
 
 input UpdateReportInput {
@@ -4971,11 +5255,11 @@ input UpdateReportSnapshotInput {
 }
 
 input UpdateRoleInput {
-  AzureID: String
   Description: String
+  DirectoryID: String
   ID: Int!
   Name: String!
-  SQLName: String!
+  SQLName: String
 }
 
 input UpdateSchemaInfoInput {
@@ -5061,6 +5345,7 @@ input UpdateUserRecordLogInput {
 
 input UpdateUserViewCategoryInput {
   Description: String
+  EntityID: Int!
   ID: Int!
   Name: String!
   ParentID: Int
@@ -5116,6 +5401,18 @@ input UpdateVectorIndexInput {
   VectorDatabaseID: Int!
 }
 
+input UpdateVersionInstallationInput {
+  Comments: String
+  ID: Int!
+  InstallLog: String
+  InstalledAt: Timestamp!
+  MajorVersion: Int!
+  MinorVersion: Int!
+  PatchVersion: Int!
+  Status: String!
+  Type: String
+}
+
 input UpdateWorkflowEngineInput {
   Description: String
   DriverClass: String!
@@ -5125,11 +5422,15 @@ input UpdateWorkflowEngineInput {
 }
 
 input UpdateWorkflowInput {
+  AutoRunEnabled: Boolean!
+  AutoRunInterval: Int
+  AutoRunIntervalUnits: String
   CompanyName: String!
   Description: String
   ExternalSystemRecordID: String!
   ID: Int!
   Name: String!
+  SubclassName: String
   WorkflowEngineName: String!
 }
 
@@ -5203,6 +5504,7 @@ input UserFavoriteSetParams {
   UserID: Int!
 }
 
+"""Records that each user can mark as a favorite for easy access"""
 type UserFavorite_ {
   CreatedAt: Timestamp!
   Entity: String!
@@ -5258,6 +5560,7 @@ type UserRole_ {
 type UserViewCategory_ {
   CreatedAt: Timestamp!
   Description: String
+  EntityID: Int!
   ID: Int!
   Name: String!
   Parent: String
@@ -5267,6 +5570,9 @@ type UserViewCategory_ {
   UserViewsArray: [UserView_!]!
 }
 
+"""
+Tracks the set of records that were included in each run of a given user view.
+"""
 type UserViewRunDetail_ {
   EntityID: Int!
   ID: Int!
@@ -5275,6 +5581,9 @@ type UserViewRunDetail_ {
   UserViewRunID: Int!
 }
 
+"""
+User Views can be logged when run to capture the date and user that ran the view as well as the output results.
+"""
 type UserViewRun_ {
   ID: Int!
   RunAt: Timestamp!
@@ -5285,6 +5594,9 @@ type UserViewRun_ {
   UserViewRunDetailsArray: [UserViewRunDetail_!]!
 }
 
+"""
+Views are sets of records within a given entity defined by filtering rules. Views can be used programatically to retrieve dynamic sets of data and in user interfaces like MJ Explorer for end-user consumption.
+"""
 type UserView_ {
   CategoryID: Int
   CreatedAt: Timestamp
@@ -5318,6 +5630,7 @@ type UserView_ {
   WhereClause: String
 }
 
+"""A list of all users who have or had access to the system"""
 type User_ {
   AuditLogsArray: [AuditLog_!]!
   CompanyIntegrationRunsArray: [CompanyIntegrationRun_!]!
@@ -5382,6 +5695,30 @@ type VectorIndex_ {
   VectorDatabaseID: Int!
 }
 
+type VersionInstallation_ {
+  """
+  Optional, comments the administrator wants to save for each installed version
+  """
+  Comments: String
+  CompleteVersion: String
+  CreatedAt: Timestamp!
+  ID: Int!
+
+  """Any logging that was saved from the installation process"""
+  InstallLog: String
+  InstalledAt: Timestamp!
+  MajorVersion: Int!
+  MinorVersion: Int!
+  PatchVersion: Int!
+
+  """Pending, Complete, Failed"""
+  Status: String!
+
+  """What type of installation was applied"""
+  Type: String
+  UpdatedAt: Timestamp!
+}
+
 type WorkflowEngine_ {
   CreatedAt: Timestamp!
   Description: String
@@ -5406,6 +5743,19 @@ type WorkflowRun_ {
 }
 
 type Workflow_ {
+  """
+  If set to 1, the workflow will be run automatically on the interval specified by the AutoRunIntervalType and AutoRunInterval fields
+  """
+  AutoRunEnabled: Boolean!
+
+  """
+  The interval, denominated in the units specified in the AutoRunIntervalUnits column, between auto runs of this workflow.
+  """
+  AutoRunInterval: Int
+  AutoRunIntervalMinutes: Int
+
+  """Minutes, Hours, Days, Weeks, Months, Years"""
+  AutoRunIntervalUnits: String
   CompanyName: String!
   CreatedAt: Timestamp!
   Description: String
@@ -5413,11 +5763,17 @@ type Workflow_ {
   ID: Int!
   Name: String!
   ReportsArray: [Report_!]!
+
+  """
+  If specified, this subclass key, via the ClassFactory, will be instantiated, to execute this workflow. If not specified the WorkflowBase class will be used by default.
+  """
+  SubclassName: String
   UpdatedAt: Timestamp!
   WorkflowEngineName: String!
   WorkflowRunsArray: [WorkflowRun_!]!
 }
 
+"""Tracks the resources that are active within a given worksapce"""
 type WorkspaceItem_ {
   Configuration: String
   Description: String
@@ -5431,6 +5787,7 @@ type WorkspaceItem_ {
   WorkSpaceID: Int!
 }
 
+"""A user can have one or more workspaces"""
 type Workspace_ {
   Description: String
   ID: Int!

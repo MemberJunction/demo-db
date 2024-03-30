@@ -6,9 +6,19 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { SingleApplicationComponent, SingleEntityComponent, SingleRecordComponent, HomeComponent, 
-         UserNotificationsComponent, SettingsComponent, DataBrowserComponent, ReportBrowserComponent, 
-         DashboardBrowserComponent, AuthGuardService as AuthGuard } from "@memberjunction/ng-explorer-core";
+import {
+  SingleApplicationComponent,
+  SingleEntityComponent,
+  SingleRecordComponent,
+  HomeComponent,
+  UserNotificationsComponent,
+  DataBrowserComponent,
+  ReportBrowserComponent,
+  DashboardBrowserComponent,
+  AuthGuardService as AuthGuard,
+  FilesComponent,
+} from '@memberjunction/ng-explorer-core';
+import { SettingsComponent } from '@memberjunction/ng-explorer-settings';
 import { LogError} from "@memberjunction/core";
 import { MJEventType, MJGlobal } from '@memberjunction/global';
 import { QueryBrowserComponent } from '@memberjunction/ng-explorer-core';
@@ -127,21 +137,38 @@ export class ResourceResolver implements Resolve<void> {
   }
 }
 
-
-
-
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },  
   { path: 'askskip', component: SkipChatComponent, canActivate: [AuthGuard] },
   { path: 'askskip/:conversationId', component: SkipChatComponent, canActivate: [AuthGuard] },
   { path: 'dashboards', component: DashboardBrowserComponent, canActivate: [AuthGuard] },  
+  { path: 'dashboards/:folderID', component: DashboardBrowserComponent, canActivate: [AuthGuard] },  
   { path: 'reports', component: ReportBrowserComponent, canActivate: [AuthGuard] },  
+  { path: 'reports/:folderID', component: ReportBrowserComponent, canActivate: [AuthGuard] },  
   { path: 'queries', component: QueryBrowserComponent, canActivate: [AuthGuard] },  
+  { path: 'queries/:folderID', component: QueryBrowserComponent, canActivate: [AuthGuard] },  
   { path: 'data', component: DataBrowserComponent, canActivate: [AuthGuard] },  
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },  
-  { path: 'notifications', component: UserNotificationsComponent, canActivate: [AuthGuard] },  
+  { path: 'files', component: FilesComponent, canActivate: [AuthGuard] },  
+  { path: 'settings', 
+    component: SettingsComponent, 
+    canActivate: [AuthGuard],  
+    children: [
+      {
+        path: '',
+        component: SettingsComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        component: SettingsComponent
+      }
+    ]
+  },  
+  { path: 'notifications', component: UserNotificationsComponent, canActivate: [AuthGuard] },
   { path: 'app/:appName', component: SingleApplicationComponent, canActivate: [AuthGuard] },
+  { path: 'app/:appName/:entityName', component: SingleApplicationComponent, canActivate: [AuthGuard] },
+  { path: 'app/:appName/:entityName/:folderID', component: SingleApplicationComponent, canActivate: [AuthGuard] },
   { path: 'entity/:entityName', component: SingleEntityComponent, canActivate: [AuthGuard] },
   { 
     path: 'resource/:resourceType/:resourceRecordId', 

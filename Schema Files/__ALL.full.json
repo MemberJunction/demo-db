@@ -3,7 +3,7 @@
     "entities": [
     { 
         "Name": "AI Actions",
-        "Description": "",
+        "Description": "List of all actions that are possible across all AI Models",
         "BaseView": "vwAIActions", 
         "Fields": [         
             {
@@ -66,7 +66,7 @@
     },
     { 
         "Name": "AI Model Actions",
-        "Description": "",
+        "Description": "Tracks the actions supported by each AI Model",
         "BaseView": "vwAIModelActions", 
         "Fields": [         
             {
@@ -125,7 +125,7 @@
     },
     { 
         "Name": "AI Model Types",
-        "Description": "",
+        "Description": "Types of AI Models",
         "BaseView": "vwAIModelTypes", 
         "Fields": [         
             {
@@ -150,7 +150,7 @@
     },
     { 
         "Name": "AI Models",
-        "Description": "",
+        "Description": "Catalog of all AI Models configured in the system.",
         "BaseView": "vwAIModels", 
         "Fields": [         
             {
@@ -219,7 +219,7 @@
     },
     { 
         "Name": "Application Entities",
-        "Description": "",
+        "Description": "List of entities within each application. An application can have any number of entities and an entity can be part of any number of applications.",
         "BaseView": "vwApplicationEntities", 
         "Fields": [         
             {
@@ -308,7 +308,7 @@
     },
     { 
         "Name": "Applications",
-        "Description": "",
+        "Description": "Applications are used to group entities in the user interface for ease of user access",
         "BaseView": "vwApplications", 
         "Fields": [         
             {
@@ -601,7 +601,7 @@
     },
     { 
         "Name": "Companies",
-        "Description": "",
+        "Description": "A list of organizational units within your business. These can be subsidiaries or divisions or other units. Companies are used to organizae employee records and also for separating integrations if you have multiple integrations of the same type of system.",
         "BaseView": "vwCompanies", 
         "Fields": [         
             {
@@ -896,7 +896,7 @@
     },
     { 
         "Name": "Company Integrations",
-        "Description": "",
+        "Description": "Links individual company records to specific integrations",
         "BaseView": "vwCompanyIntegrations", 
         "Fields": [         
             {
@@ -1266,7 +1266,7 @@
     },
     { 
         "Name": "Dashboards",
-        "Description": "",
+        "Description": "Dashboards are used to group resources into a single display pane for an end-user",
         "BaseView": "vwDashboards", 
         "Fields": [         
             {
@@ -1493,7 +1493,7 @@
     },
     { 
         "Name": "Dataset Items",
-        "Description": "",
+        "Description": "A single item in a Dataset and can be sourced from multiple methods.",
         "BaseView": "vwDatasetItems", 
         "Fields": [         
             {
@@ -1570,7 +1570,7 @@
     },
     { 
         "Name": "Datasets",
-        "Description": "",
+        "Description": "Cacheable sets of data that can span one or more items",
         "BaseView": "vwDatasets", 
         "Fields": [         
             {
@@ -1754,7 +1754,7 @@
     },
     { 
         "Name": "Employees",
-        "Description": "",
+        "Description": "A list of employees across all units of your organization",
         "BaseView": "vwEmployees", 
         "Fields": [         
             {
@@ -1867,7 +1867,7 @@
     },
     { 
         "Name": "Entities",
-        "Description": "",
+        "Description": "Catalog of all entities across all schemas",
         "BaseView": "vwEntities", 
         "Fields": [         
             {
@@ -2158,7 +2158,7 @@
     },
     { 
         "Name": "Entity AI Actions",
-        "Description": "",
+        "Description": "Tracks the AI actions that should be invoked based on changes to records within a given entity.",
         "BaseView": "vwEntityAIActions", 
         "Fields": [         
             {
@@ -2453,8 +2453,8 @@
                 "Name": "EntityID", 
                 "Description": "",  
                 "Type": "int",
-                "RelatedEntity": "Entities",
-                "RelatedEntityFieldName": "ID",
+                "RelatedEntity": "Entity Fields",
+                "RelatedEntityFieldName": "EntityID",
                 "AllowsNull": false 
             },         
             {
@@ -2502,6 +2502,12 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "EntityField", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Entity", 
                 "Description": "",  
                 "Type": "nvarchar",
@@ -2511,7 +2517,7 @@
     },
     { 
         "Name": "Entity Fields",
-        "Description": "",
+        "Description": "List of all fields within each entity with metadata about each field",
         "BaseView": "vwEntityFields", 
         "Fields": [         
             {
@@ -2816,7 +2822,7 @@
     },
     { 
         "Name": "Entity Permissions",
-        "Description": "",
+        "Description": "Security settings for each entity",
         "BaseView": "vwEntityPermissions", 
         "Fields": [         
             {
@@ -2919,7 +2925,7 @@
                 "Name": "RoleSQLName", 
                 "Description": "",  
                 "Type": "nvarchar",
-                "AllowsNull": false 
+                "AllowsNull": true 
             },         
             {
                 "Name": "CreateRLSFilter", 
@@ -3018,7 +3024,7 @@
     },
     { 
         "Name": "Entity Relationships",
-        "Description": "",
+        "Description": "Metadata about relationships between entities including display preferences for the UI",
         "BaseView": "vwEntityRelationships", 
         "Fields": [         
             {
@@ -3033,6 +3039,12 @@
                 "Type": "int",
                 "RelatedEntity": "Entities",
                 "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Sequence", 
+                "Description": "Used for display order in generated forms and in other places in the UI where relationships for an entity are shown",  
+                "Type": "int",
                 "AllowsNull": false 
             },         
             {
@@ -3263,8 +3275,262 @@
         ]
     },
     { 
-        "Name": "Integration URL Formats",
+        "Name": "File Categories",
         "Description": "",
+        "BaseView": "vwFileCategories", 
+        "Fields": [         
+            {
+                "Name": "ID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Name", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ParentID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "File Categories",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Parent", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "File Entity Record Links",
+        "Description": "",
+        "BaseView": "vwFileEntityRecordLinks", 
+        "Fields": [         
+            {
+                "Name": "ID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "FileID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Files",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "EntityID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Entities",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "RecordID", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "File", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Entity", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "File Storage Providers",
+        "Description": "",
+        "BaseView": "vwFileStorageProviders", 
+        "Fields": [         
+            {
+                "Name": "ID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Name", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ServerDriverKey", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "ClientDriverKey", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Priority", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "IsActive", 
+                "Description": "",  
+                "Type": "bit",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            }        
+        ]
+    },
+    { 
+        "Name": "Files",
+        "Description": "",
+        "BaseView": "vwFiles", 
+        "Fields": [         
+            {
+                "Name": "ID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Name", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Description", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ProviderID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "File Storage Providers",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "ContentType", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "ProviderKey", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CategoryID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "File Categories",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Status", 
+                "Description": "Pending, Uploading, Uploaded, Deleting, Deleted",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Provider", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Category", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
+        "Name": "Integration URL Formats",
+        "Description": "Used to generate web links for end users to easily access resources in a source system. URL Formats support templating to inject various field values at run-time to take a user directly to a resource in a source system.",
         "BaseView": "vwIntegrationURLFormats", 
         "Fields": [         
             {
@@ -3323,7 +3589,7 @@
     },
     { 
         "Name": "Integrations",
-        "Description": "",
+        "Description": "Catalog of all integrations that have been configured in the system.",
         "BaseView": "vwIntegrations", 
         "Fields": [         
             {
@@ -3390,7 +3656,7 @@
     },
     { 
         "Name": "List Details",
-        "Description": "",
+        "Description": "Tracks the records within each list.",
         "BaseView": "vwListDetails", 
         "Fields": [         
             {
@@ -3423,7 +3689,7 @@
     },
     { 
         "Name": "Lists",
-        "Description": "",
+        "Description": "Static lists are useful for controlling a set of data for a given entity. These can be used programatically for applications like logging and tracking long-running tasks and also by end users for tracking any particular list of records they want to directly control the set.",
         "BaseView": "vwLists", 
         "Fields": [         
             {
@@ -3583,7 +3849,7 @@
     },
     { 
         "Name": "Queries",
-        "Description": "",
+        "Description": "Catalog of stored queries. This is useful for any arbitrary query that is known to be performant and correct and can be reused. Queries can be viewed/run by a user, used programatically via RunQuery, and also used by AI systems for improved reliability instead of dynamically generated SQL. Queries can also improve security since they store the SQL instead of using dynamic SQL.",
         "BaseView": "vwQueries", 
         "Fields": [         
             {
@@ -3610,7 +3876,7 @@
                 "Type": "int",
                 "RelatedEntity": "Query Categories",
                 "RelatedEntityFieldName": "ID",
-                "AllowsNull": false 
+                "AllowsNull": true 
             },         
             {
                 "Name": "SQL", 
@@ -3658,7 +3924,7 @@
                 "Name": "Category", 
                 "Description": "",  
                 "Type": "nvarchar",
-                "AllowsNull": false 
+                "AllowsNull": true 
             }        
         ]
     },
@@ -3981,7 +4247,7 @@
     },
     { 
         "Name": "Queues",
-        "Description": "",
+        "Description": "Queues can be used to async execute long running tasks",
         "BaseView": "vwQueues", 
         "Fields": [         
             {
@@ -4110,7 +4376,7 @@
     },
     { 
         "Name": "Record Changes",
-        "Description": "",
+        "Description": "For entities that have TrackRecordChanges=1, Record Changes will store the history of all changes made within the system. For integrations you can directly add values here if you have inbound signals indicating records were changed in a source system. This entity only automatically captures Record Changes if they were made within the system.",
         "BaseView": "vwRecordChanges", 
         "Fields": [         
             {
@@ -4372,7 +4638,7 @@
                 "Type": "int",
                 "RelatedEntity": "Report Categories",
                 "RelatedEntityFieldName": "ID",
-                "AllowsNull": false 
+                "AllowsNull": true 
             },         
             {
                 "Name": "CreatedAt", 
@@ -4390,7 +4656,7 @@
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
-                "AllowsNull": false 
+                "AllowsNull": true 
             }        
         ]
     },
@@ -4701,7 +4967,7 @@
     },
     { 
         "Name": "Roles",
-        "Description": "",
+        "Description": "Roles are used for security administration and can have zero to many Users as members",
         "BaseView": "vwRoles", 
         "Fields": [         
             {
@@ -4718,21 +4984,21 @@
             },         
             {
                 "Name": "Description", 
-                "Description": "",  
+                "Description": "Description of the role",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
             },         
             {
-                "Name": "AzureID", 
-                "Description": "",  
+                "Name": "DirectoryID", 
+                "Description": "The unique ID of the role in the directory being used for authentication, for example an ID in Azure.",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
             },         
             {
                 "Name": "SQLName", 
-                "Description": "",  
+                "Description": "The name of the role in the database, this is used for auto-generating permission statements by CodeGen",  
                 "Type": "nvarchar",
-                "AllowsNull": false 
+                "AllowsNull": true 
             },         
             {
                 "Name": "CreatedAt", 
@@ -4793,7 +5059,7 @@
     },
     { 
         "Name": "Schema Info",
-        "Description": "",
+        "Description": "Tracks the schemas in the system and the ID ranges that are valid for entities within each schema.",
         "BaseView": "vwSchemaInfos", 
         "Fields": [         
             {
@@ -4842,7 +5108,7 @@
     },
     { 
         "Name": "Skills",
-        "Description": "",
+        "Description": "A hierarchical list of possible skills that are linked to Employees and can also be linked to any other entity",
         "BaseView": "vwSkills", 
         "Fields": [         
             {
@@ -4887,7 +5153,7 @@
     },
     { 
         "Name": "Tagged Items",
-        "Description": "",
+        "Description": "Tracks the links between any record in any entity with Tags",
         "BaseView": "vwTaggedItems", 
         "Fields": [         
             {
@@ -4934,7 +5200,7 @@
     },
     { 
         "Name": "Tags",
-        "Description": "",
+        "Description": "Tags are used to arbitrarily associate any record in any entity with addtional information.",
         "BaseView": "vwTags", 
         "Fields": [         
             {
@@ -5085,7 +5351,7 @@
     },
     { 
         "Name": "User Favorites",
-        "Description": "",
+        "Description": "Records that each user can mark as a favorite for easy access",
         "BaseView": "vwUserFavorites", 
         "Fields": [         
             {
@@ -5409,6 +5675,12 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "EntityID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
@@ -5418,7 +5690,7 @@
     },
     { 
         "Name": "User View Run Details",
-        "Description": "",
+        "Description": "Tracks the set of records that were included in each run of a given user view.",
         "BaseView": "vwUserViewRunDetails", 
         "Fields": [         
             {
@@ -5457,7 +5729,7 @@
     },
     { 
         "Name": "User View Runs",
-        "Description": "",
+        "Description": "User Views can be logged when run to capture the date and user that ran the view as well as the output results.",
         "BaseView": "vwUserViewRuns", 
         "Fields": [         
             {
@@ -5504,7 +5776,7 @@
     },
     { 
         "Name": "User Views",
-        "Description": "",
+        "Description": "Views are sets of records within a given entity defined by filtering rules. Views can be used programatically to retrieve dynamic sets of data and in user interfaces like MJ Explorer for end-user consumption.",
         "BaseView": "vwUserViews", 
         "Fields": [         
             {
@@ -5679,7 +5951,7 @@
     },
     { 
         "Name": "Users",
-        "Description": "",
+        "Description": "A list of all users who have or had access to the system",
         "BaseView": "vwUsers", 
         "Fields": [         
             {
@@ -5921,6 +6193,85 @@
         ]
     },
     { 
+        "Name": "Version Installations",
+        "Description": "",
+        "BaseView": "vwVersionInstallations", 
+        "Fields": [         
+            {
+                "Name": "ID", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MajorVersion", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "MinorVersion", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "PatchVersion", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Type", 
+                "Description": "What type of installation was applied",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "InstalledAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "Status", 
+                "Description": "Pending, Complete, Failed",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "InstallLog", 
+                "Description": "Any logging that was saved from the installation process",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "Comments", 
+                "Description": "Optional, comments the administrator wants to save for each installed version",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "CreatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "UpdatedAt", 
+                "Description": "",  
+                "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "CompleteVersion", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            }        
+        ]
+    },
+    { 
         "Name": "Workflow Engines",
         "Description": "",
         "BaseView": "vwWorkflowEngines", 
@@ -6088,12 +6439,42 @@
                 "Description": "",  
                 "Type": "datetime",
                 "AllowsNull": false 
+            },         
+            {
+                "Name": "AutoRunEnabled", 
+                "Description": "If set to 1, the workflow will be run automatically on the interval specified by the AutoRunIntervalType and AutoRunInterval fields",  
+                "Type": "bit",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "AutoRunIntervalUnits", 
+                "Description": "Minutes, Hours, Days, Weeks, Months, Years",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "AutoRunInterval", 
+                "Description": "The interval, denominated in the units specified in the AutoRunIntervalUnits column, between auto runs of this workflow.",  
+                "Type": "int",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "SubclassName", 
+                "Description": "If specified, this subclass key, via the ClassFactory, will be instantiated, to execute this workflow. If not specified the WorkflowBase class will be used by default.",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "AutoRunIntervalMinutes", 
+                "Description": "",  
+                "Type": "int",
+                "AllowsNull": true 
             }        
         ]
     },
     { 
         "Name": "Workspace Items",
-        "Description": "",
+        "Description": "Tracks the resources that are active within a given worksapce",
         "BaseView": "vwWorkspaceItems", 
         "Fields": [         
             {
@@ -6164,7 +6545,7 @@
     },
     { 
         "Name": "Workspaces",
-        "Description": "",
+        "Description": "A user can have one or more workspaces",
         "BaseView": "vwWorkspaces", 
         "Fields": [         
             {
@@ -6633,7 +7014,7 @@
     },
     { 
         "Name": "Events",
-        "Description": "",
+        "Description": "Listing of all past, present, and future events",
         "BaseView": "vwEvents", 
         "Fields": [         
             {

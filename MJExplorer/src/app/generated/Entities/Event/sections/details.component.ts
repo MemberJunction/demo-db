@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RegisterClass } from '@memberjunction/global';
-import { BaseFormSectionComponent } from '@memberjunction/ng-explorer-core';
+import { BaseFormSectionComponent } from '@memberjunction/ng-base-forms';
 import { EventEntity } from 'mj_generatedentities';
 
 @RegisterClass(BaseFormSectionComponent, 'Events.details') // Tell MemberJunction about this class 
@@ -28,11 +28,11 @@ import { EventEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Start Date</label>
-            <kendo-datepicker [(value)]="record.StartDate" ></kendo-datepicker>   
+            <kendo-datepicker [(value)]="record.StartDate!" ></kendo-datepicker>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">End Date</label>
-            <kendo-datepicker [(value)]="record.EndDate" ></kendo-datepicker>   
+            <kendo-datepicker [(value)]="record.EndDate!" ></kendo-datepicker>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Address</label>
@@ -60,15 +60,15 @@ import { EventEntity } from 'mj_generatedentities';
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Member Price</label>
-            <kendo-numerictextbox [(value)]="record.MemberPrice" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.MemberPrice!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Non Member Price</label>
-            <kendo-numerictextbox [(value)]="record.NonMemberPrice" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.NonMemberPrice!" ></kendo-numerictextbox>   
         </div>               
         <div class="record-form-row">
             <label class="fieldLabel">Speaker Price</label>
-            <kendo-numerictextbox [(value)]="record.SpeakerPrice" ></kendo-numerictextbox>   
+            <kendo-numerictextbox [(value)]="record.SpeakerPrice!" ></kendo-numerictextbox>   
         </div> 
     </div>
     <div *ngIf="!this.EditMode" class="record-form">

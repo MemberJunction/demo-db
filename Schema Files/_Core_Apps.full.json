@@ -429,7 +429,7 @@
     },
     { 
         "Name": "Events",
-        "Description": "",
+        "Description": "Listing of all past, present, and future events",
         "BaseView": "vwEvents", 
         "Fields": [         
             {

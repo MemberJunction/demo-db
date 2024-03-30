@@ -2,7 +2,7 @@
 * ALL ENTITIES - TypeGraphQL Type Class Definition - AUTO GENERATED FILE
 * Generated Entities and Resolvers for Server
 * 
-* GENERATED: 3/16/2024, 12:11:43 PM
+* GENERATED: 3/30/2024, 4:35:30 PM
 * 
 *   >>> DO NOT MODIFY THIS FILE!!!!!!!!!!!!
 *   >>> YOUR CHANGES WILL BE OVERWRITTEN
@@ -50,13 +50,10 @@ export class Reply_ {
 //****************************************************************************
 @InputType()
 export class CreateReplyInput {
-    @Field(() => Int, )
-    ReplyID: number;
-
-    @Field(() => Int, )
+    @Field(() => Int)
     PostID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AuthorID: number;
 
     @Field({ nullable: true })
@@ -72,13 +69,13 @@ export class CreateReplyInput {
 //****************************************************************************
 @InputType()
 export class UpdateReplyInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     ReplyID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     PostID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AuthorID: number;
 
     @Field({ nullable: true })
@@ -234,13 +231,10 @@ export class Post_ {
 //****************************************************************************
 @InputType()
 export class CreatePostInput {
-    @Field(() => Int, )
-    PostID: number;
-
-    @Field(() => Int, )
+    @Field(() => Int)
     ForumID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AuthorID: number;
 
     @Field({ nullable: true })
@@ -256,13 +250,13 @@ export class CreatePostInput {
 //****************************************************************************
 @InputType()
 export class UpdatePostInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     PostID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     ForumID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AuthorID: number;
 
     @Field({ nullable: true })
@@ -452,9 +446,6 @@ export class Company__community_ {
 //****************************************************************************
 @InputType()
 export class CreateCompany__communityInput {
-    @Field(() => Int, )
-    CompanyID: number;
-
     @Field()
     CompanyName: string;
 
@@ -489,7 +480,7 @@ export class CreateCompany__communityInput {
 //****************************************************************************
 @InputType()
 export class UpdateCompany__communityInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     CompanyID: number;
 
     @Field()
@@ -698,11 +689,11 @@ export class Author_ {
     @MaxLength(200)
     Country?: string;
     
-    @Field(() => [Post_])
-    PostsArray: Post_[]; // Link to Posts
-
     @Field(() => [Reply_])
     RepliesArray: Reply_[]; // Link to Replies
+
+    @Field(() => [Post_])
+    PostsArray: Post_[]; // Link to Posts
 
     @Field(() => [PersonLink_])
     PersonLinksArray: PersonLink_[]; // Link to PersonLinks
@@ -714,9 +705,6 @@ export class Author_ {
 //****************************************************************************
 @InputType()
 export class CreateAuthorInput {
-    @Field(() => Int, )
-    AuthorID: number;
-
     @Field(() => Int, { nullable: true })
     CompanyID: number;
 
@@ -754,7 +742,7 @@ export class CreateAuthorInput {
 //****************************************************************************
 @InputType()
 export class UpdateAuthorInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     AuthorID: number;
 
     @Field(() => Int, { nullable: true })
@@ -840,19 +828,19 @@ export class AuthorResolver extends ResolverBase {
         return result;
     }
   
-    @FieldResolver(() => [Post_])
-    async PostsArray(@Root() author_: Author_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Posts', userPayload);
-        const sSQL = `SELECT * FROM [community].[vwPosts] WHERE [AuthorID]=${author_.AuthorID} ` + this.getRowLevelSecurityWhereClause('Posts', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Posts', await dataSource.query(sSQL));
-        return result;
-    }
-      
     @FieldResolver(() => [Reply_])
     async RepliesArray(@Root() author_: Author_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
         this.CheckUserReadPermissions('Replies', userPayload);
         const sSQL = `SELECT * FROM [community].[vwReplies] WHERE [AuthorID]=${author_.AuthorID} ` + this.getRowLevelSecurityWhereClause('Replies', userPayload, EntityPermissionType.Read, 'AND');
         const result = this.ArrayMapFieldNamesToCodeNames('Replies', await dataSource.query(sSQL));
+        return result;
+    }
+      
+    @FieldResolver(() => [Post_])
+    async PostsArray(@Root() author_: Author_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Posts', userPayload);
+        const sSQL = `SELECT * FROM [community].[vwPosts] WHERE [AuthorID]=${author_.AuthorID} ` + this.getRowLevelSecurityWhereClause('Posts', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Posts', await dataSource.query(sSQL));
         return result;
     }
       
@@ -956,9 +944,6 @@ export class Forum_ {
 //****************************************************************************
 @InputType()
 export class CreateForumInput {
-    @Field(() => Int, )
-    ForumID: number;
-
     @Field()
     Title: string;
 
@@ -975,7 +960,7 @@ export class CreateForumInput {
 //****************************************************************************
 @InputType()
 export class UpdateForumInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     ForumID: number;
 
     @Field()
@@ -1129,9 +1114,6 @@ export class ReplySeed_ {
 //****************************************************************************
 @InputType()
 export class CreateReplySeedInput {
-    @Field(() => Int, )
-    ReplySeedID: number;
-
     @Field({ nullable: true })
     Content: string;
 }
@@ -1142,7 +1124,7 @@ export class CreateReplySeedInput {
 //****************************************************************************
 @InputType()
 export class UpdateReplySeedInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     ReplySeedID: number;
 
     @Field({ nullable: true })
@@ -1287,9 +1269,6 @@ export class NameSeed_ {
 //****************************************************************************
 @InputType()
 export class CreateNameSeedInput {
-    @Field(() => Int, )
-    NameID: number;
-
     @Field({ nullable: true })
     Name: string;
 
@@ -1303,7 +1282,7 @@ export class CreateNameSeedInput {
 //****************************************************************************
 @InputType()
 export class UpdateNameSeedInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     NameID: number;
 
     @Field({ nullable: true })
@@ -1447,9 +1426,6 @@ export class JobTitleSeed_ {
 //****************************************************************************
 @InputType()
 export class CreateJobTitleSeedInput {
-    @Field(() => Int, )
-    JobTitleID: number;
-
     @Field({ nullable: true })
     JobTitle: string;
 }
@@ -1460,7 +1436,7 @@ export class CreateJobTitleSeedInput {
 //****************************************************************************
 @InputType()
 export class UpdateJobTitleSeedInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     JobTitleID: number;
 
     @Field({ nullable: true })
@@ -1604,9 +1580,6 @@ export class PostSeed_ {
 //****************************************************************************
 @InputType()
 export class CreatePostSeedInput {
-    @Field(() => Int, )
-    PostSeedID: number;
-
     @Field({ nullable: true })
     Content: string;
 
@@ -1620,7 +1593,7 @@ export class CreatePostSeedInput {
 //****************************************************************************
 @InputType()
 export class UpdatePostSeedInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     PostSeedID: number;
 
     @Field({ nullable: true })
@@ -1802,9 +1775,6 @@ export class Organization_ {
 //****************************************************************************
 @InputType()
 export class CreateOrganizationInput {
-    @Field(() => Int, )
-    OrganizationID: number;
-
     @Field()
     OrganizationName: string;
 
@@ -1839,7 +1809,7 @@ export class CreateOrganizationInput {
 //****************************************************************************
 @InputType()
 export class UpdateOrganizationInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     OrganizationID: number;
 
     @Field()
@@ -2041,13 +2011,10 @@ export class Registration__events_ {
 //****************************************************************************
 @InputType()
 export class CreateRegistration__eventsInput {
-    @Field(() => Int, )
-    RegistrationID: number;
-
-    @Field(() => Int, )
+    @Field(() => Int)
     EventID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AttendeeID: number;
 
     @Field()
@@ -2072,13 +2039,13 @@ export class CreateRegistration__eventsInput {
 //****************************************************************************
 @InputType()
 export class UpdateRegistration__eventsInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     RegistrationID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     EventID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     AttendeeID: number;
 
     @Field()
@@ -2272,9 +2239,6 @@ export class Attendee_ {
 //****************************************************************************
 @InputType()
 export class CreateAttendeeInput {
-    @Field(() => Int, )
-    AttendeeID: number;
-
     @Field(() => Int, { nullable: true })
     OrganizationID: number;
 
@@ -2312,7 +2276,7 @@ export class CreateAttendeeInput {
 //****************************************************************************
 @InputType()
 export class UpdateAttendeeInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     AttendeeID: number;
 
     @Field(() => Int, { nullable: true })
@@ -2480,7 +2444,7 @@ export class AttendeeResolver extends ResolverBase {
 //****************************************************************************
 // ENTITY CLASS for Events
 //****************************************************************************
-@ObjectType()
+@ObjectType({ description: 'Listing of all past, present, and future events' })
 export class Event_ {  
     @Field(() => Int) 
     EventID: number;
@@ -2547,9 +2511,6 @@ export class Event_ {
 //****************************************************************************
 @InputType()
 export class CreateEventInput {
-    @Field(() => Int, )
-    EventID: number;
-
     @Field()
     EventName: string;
 
@@ -2599,7 +2560,7 @@ export class CreateEventInput {
 //****************************************************************************
 @InputType()
 export class UpdateEventInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     EventID: number;
 
     @Field()
@@ -2828,9 +2789,6 @@ export class Student_ {
 //****************************************************************************
 @InputType()
 export class CreateStudentInput {
-    @Field(() => Int, )
-    StudentID: number;
-
     @Field(() => Int, { nullable: true })
     CompanyID: number;
 
@@ -2868,7 +2826,7 @@ export class CreateStudentInput {
 //****************************************************************************
 @InputType()
 export class UpdateStudentInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     StudentID: number;
 
     @Field(() => Int, { nullable: true })
@@ -3072,13 +3030,10 @@ export class Registration_ {
 //****************************************************************************
 @InputType()
 export class CreateRegistrationInput {
-    @Field(() => Int, )
-    RegistrationID: number;
-
-    @Field(() => Int, )
+    @Field(() => Int)
     CourseID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     StudentID: number;
 
     @Field()
@@ -3103,13 +3058,13 @@ export class CreateRegistrationInput {
 //****************************************************************************
 @InputType()
 export class UpdateRegistrationInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     RegistrationID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     CourseID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     StudentID: number;
 
     @Field()
@@ -3300,9 +3255,6 @@ export class Company__education_ {
 //****************************************************************************
 @InputType()
 export class CreateCompany__educationInput {
-    @Field(() => Int, )
-    CompanyID: number;
-
     @Field()
     CompanyName: string;
 
@@ -3337,7 +3289,7 @@ export class CreateCompany__educationInput {
 //****************************************************************************
 @InputType()
 export class UpdateCompany__educationInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     CompanyID: number;
 
     @Field()
@@ -3541,9 +3493,6 @@ export class Course_ {
 //****************************************************************************
 @InputType()
 export class CreateCourseInput {
-    @Field(() => Int, )
-    CourseID: number;
-
     @Field()
     CourseName: string;
 
@@ -3572,7 +3521,7 @@ export class CreateCourseInput {
 //****************************************************************************
 @InputType()
 export class UpdateCourseInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     CourseID: number;
 
     @Field()
@@ -3753,9 +3702,6 @@ export class Instructor_ {
 //****************************************************************************
 @InputType()
 export class CreateInstructorInput {
-    @Field(() => Int, )
-    InstructorID: number;
-
     @Field({ nullable: true })
     FirstName: string;
 
@@ -3775,7 +3721,7 @@ export class CreateInstructorInput {
 //****************************************************************************
 @InputType()
 export class UpdateInstructorInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     InstructorID: number;
 
     @Field({ nullable: true })
@@ -3949,9 +3895,6 @@ export class OrganizationLink_ {
 //****************************************************************************
 @InputType()
 export class CreateOrganizationLinkInput {
-    @Field(() => Int, )
-    OrganizationLinkID: number;
-
     @Field(() => Int, { nullable: true })
     MembershipCompanyID: number;
 
@@ -3971,7 +3914,7 @@ export class CreateOrganizationLinkInput {
 //****************************************************************************
 @InputType()
 export class UpdateOrganizationLinkInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     OrganizationLinkID: number;
 
     @Field(() => Int, { nullable: true })
@@ -4130,21 +4073,6 @@ export class PersonLink_ {
     @MaxLength(8)
     UpdatedAt: Date;
     
-    @Field(() => [MembershipRenewal_])
-    MembershipRenewalsArray: MembershipRenewal_[]; // Link to MembershipRenewals
-
-    @Field(() => [Registration_])
-    RegistrationsArray: Registration_[]; // Link to Registrations
-
-    @Field(() => [Registration__events_])
-    Registrations__eventsArray: Registration__events_[]; // Link to Registrations__events
-
-    @Field(() => [Post_])
-    PostsArray: Post_[]; // Link to Posts
-
-    @Field(() => [Reply_])
-    RepliesArray: Reply_[]; // Link to Replies
-
 }
         
 //****************************************************************************
@@ -4152,9 +4080,6 @@ export class PersonLink_ {
 //****************************************************************************
 @InputType()
 export class CreatePersonLinkInput {
-    @Field(() => Int, )
-    PersonLinkID: number;
-
     @Field(() => Int, { nullable: true })
     MembershipMemberID: number;
 
@@ -4174,7 +4099,7 @@ export class CreatePersonLinkInput {
 //****************************************************************************
 @InputType()
 export class UpdatePersonLinkInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     PersonLinkID: number;
 
     @Field(() => Int, { nullable: true })
@@ -4241,47 +4166,7 @@ export class PersonLinkResolver extends ResolverBase {
         const result = this.MapFieldNamesToCodeNames('Person Links', await dataSource.query(sSQL).then((r) => r && r.length > 0 ? r[0] : {}))
         return result;
     }
-  
-    @FieldResolver(() => [MembershipRenewal_])
-    async MembershipRenewalsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Membership Renewals', userPayload);
-        const sSQL = `SELECT * FROM [membership].[vwMembershipRenewals] WHERE [MemberID]=${personlink_.MembershipMemberID} ` + this.getRowLevelSecurityWhereClause('Membership Renewals', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Membership Renewals', await dataSource.query(sSQL));
-        return result;
-    }
-      
-    @FieldResolver(() => [Registration_])
-    async RegistrationsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Registrations', userPayload);
-        const sSQL = `SELECT * FROM [education].[vwRegistrations] WHERE [StudentID]=${personlink_.EducationStudentID} ` + this.getRowLevelSecurityWhereClause('Registrations', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Registrations', await dataSource.query(sSQL));
-        return result;
-    }
-      
-    @FieldResolver(() => [Registration__events_])
-    async Registrations__eventsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Registrations__events', userPayload);
-        const sSQL = `SELECT * FROM [events].[vwRegistrations__events] WHERE [AttendeeID]=${personlink_.EventsAttendeeID} ` + this.getRowLevelSecurityWhereClause('Registrations__events', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Registrations__events', await dataSource.query(sSQL));
-        return result;
-    }
-      
-    @FieldResolver(() => [Post_])
-    async PostsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Posts', userPayload);
-        const sSQL = `SELECT * FROM [community].[vwPosts] WHERE [AuthorID]=${personlink_.CommunityAuthorID} ` + this.getRowLevelSecurityWhereClause('Posts', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Posts', await dataSource.query(sSQL));
-        return result;
-    }
-      
-    @FieldResolver(() => [Reply_])
-    async RepliesArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
-        this.CheckUserReadPermissions('Replies', userPayload);
-        const sSQL = `SELECT * FROM [community].[vwReplies] WHERE [AuthorID]=${personlink_.CommunityAuthorID} ` + this.getRowLevelSecurityWhereClause('Replies', userPayload, EntityPermissionType.Read, 'AND');
-        const result = this.ArrayMapFieldNamesToCodeNames('Replies', await dataSource.query(sSQL));
-        return result;
-    }
-    
+
     @Mutation(() => PersonLink_)
     async CreatePersonLink(
         @Arg('input', () => CreatePersonLinkInput) input: CreatePersonLinkInput,
@@ -4374,10 +4259,7 @@ export class MembershipRenewal_ {
 //****************************************************************************
 @InputType()
 export class CreateMembershipRenewalInput {
-    @Field(() => Int, )
-    RenewalID: number;
-
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberID: number;
 
     @Field()
@@ -4396,10 +4278,10 @@ export class CreateMembershipRenewalInput {
 //****************************************************************************
 @InputType()
 export class UpdateMembershipRenewalInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     RenewalID: number;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberID: number;
 
     @Field()
@@ -4555,9 +4437,6 @@ export class MemberType_ {
 //****************************************************************************
 @InputType()
 export class CreateMemberTypeInput {
-    @Field(() => Int, )
-    MemberTypeID: number;
-
     @Field()
     TypeName: string;
 
@@ -4574,7 +4453,7 @@ export class CreateMemberTypeInput {
 //****************************************************************************
 @InputType()
 export class UpdateMemberTypeInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberTypeID: number;
 
     @Field()
@@ -4780,9 +4659,6 @@ export class Company__membership_ {
 //****************************************************************************
 @InputType()
 export class CreateCompany__membershipInput {
-    @Field(() => Int, )
-    CompanyID: number;
-
     @Field()
     CompanyName: string;
 
@@ -4829,7 +4705,7 @@ export class CreateCompany__membershipInput {
 //****************************************************************************
 @InputType()
 export class UpdateCompany__membershipInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     CompanyID: number;
 
     @Field()
@@ -5050,9 +4926,6 @@ export class Member_ {
 //****************************************************************************
 @InputType()
 export class CreateMemberInput {
-    @Field(() => Int, )
-    MemberID: number;
-
     @Field(() => Int, { nullable: true })
     CompanyID: number;
 
@@ -5071,7 +4944,7 @@ export class CreateMemberInput {
     @Field()
     JoinDate: Date;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberTypeID: number;
 }
 
@@ -5081,7 +4954,7 @@ export class CreateMemberInput {
 //****************************************************************************
 @InputType()
 export class UpdateMemberInput {
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberID: number;
 
     @Field(() => Int, { nullable: true })
@@ -5102,7 +4975,7 @@ export class UpdateMemberInput {
     @Field()
     JoinDate: Date;
 
-    @Field(() => Int, )
+    @Field(() => Int)
     MemberTypeID: number;
 }
 
