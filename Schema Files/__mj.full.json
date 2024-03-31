@@ -1922,7 +1922,7 @@
             },         
             {
                 "Name": "BaseViewGenerated", 
-                "Description": "",  
+                "Description": "When set to 0, CodeGen no longer generates a base view for the entity.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
@@ -1940,61 +1940,61 @@
             },         
             {
                 "Name": "TrackRecordChanges", 
-                "Description": "",  
+                "Description": "When set to 1, changes made via the MemberJunction architecture will result in tracking records being created in the RecordChange table",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AuditRecordAccess", 
-                "Description": "",  
+                "Description": "When set to 1, accessing a record by an end-user will result in an Audit Log record being created",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AuditViewRuns", 
-                "Description": "",  
+                "Description": "When set to 1, users running a view against this entity will result in an Audit Log record being created.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "IncludeInAPI", 
-                "Description": "",  
+                "Description": "If set to 0, the entity will not be available at all in the GraphQL API or the object model.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AllowAllRowsAPI", 
-                "Description": "",  
+                "Description": "If set to 1, a GraphQL query will be enabled that allows access to all rows in the entity.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AllowUpdateAPI", 
-                "Description": "",  
+                "Description": "Global flag controlling if updates are allowed for any user, or not. If set to 1, a GraqhQL mutation and stored procedure are created. Permissions are still required to perform the action but if this flag is set to 0, no user will be able to perform the action.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AllowCreateAPI", 
-                "Description": "",  
+                "Description": "Global flag controlling if creates are allowed for any user, or not. If set to 1, a GraqhQL mutation and stored procedure are created. Permissions are still required to perform the action but if this flag is set to 0, no user will be able to perform the action.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AllowDeleteAPI", 
-                "Description": "",  
+                "Description": "Global flag controlling if deletes are allowed for any user, or not. If set to 1, a GraqhQL mutation and stored procedure are created. Permissions are still required to perform the action but if this flag is set to 0, no user will be able to perform the action.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "CustomResolverAPI", 
-                "Description": "",  
+                "Description": "Set to 1 if a custom resolver has been created for the entity.",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
             {
                 "Name": "AllowUserSearchAPI", 
-                "Description": "",  
+                "Description": "Enabling this bit will result in search being possible at the API and UI layers",  
                 "Type": "bit",
                 "AllowsNull": false 
             },         
@@ -5678,6 +5678,8 @@
                 "Name": "EntityID", 
                 "Description": "",  
                 "Type": "int",
+                "RelatedEntity": "Entities",
+                "RelatedEntityFieldName": "ID",
                 "AllowsNull": false 
             },         
             {
