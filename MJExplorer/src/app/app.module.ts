@@ -35,10 +35,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DialogsModule } from "@progress/kendo-angular-dialog";
-import { FilterModule } from "@progress/kendo-angular-filter";
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { NotificationModule } from "@progress/kendo-angular-notification";
-import { ListViewModule } from '@progress/kendo-angular-listview';
 
 //***********************************************************
 // Auth0
@@ -64,7 +62,6 @@ import { AppRoutingModule, CustomReuseStrategy } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneratedFormsModule, LoadGeneratedForms } from './generated/generated-forms.module';
 import { environment } from 'src/environments/environment';
-import 'hammerjs';
 import { RouteReuseStrategy } from '@angular/router';
 import { ExplorerSettingsModule } from '@memberjunction/ng-explorer-settings';
 LoadGeneratedForms(); // prevent tree shaking and component loss through this call
@@ -102,9 +99,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     DropDownsModule,
     LabelModule,
     AppRoutingModule,
-    ListViewModule,
     DialogsModule,
-    FilterModule,
     UserViewGridModule,
     ExplorerSettingsModule,
     LinkDirectivesModule,
