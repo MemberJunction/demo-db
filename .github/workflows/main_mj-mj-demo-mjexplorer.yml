@@ -27,7 +27,6 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run generated
           npm run build --if-present
           npm run test --if-present
         working-directory: MJExplorer
