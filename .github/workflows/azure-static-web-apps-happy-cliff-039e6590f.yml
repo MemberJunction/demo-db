@@ -25,14 +25,10 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: MJExplorer
-
       - name: Create environment file
         run: |
-          mkdir -p ./MJExplorer/src/environments # Ensure the directory exists
-          cat << EOF > ./MJExplorer/src/environments/environment.ts          
+          mkdir -p ./src/environments # Ensure the directory exists
+          cat << EOF > ./src/environments/environment.ts          
           export const environment = {
             GRAPHQL_URI: '${{ secrets.GRAPHQL_URI }}',
             GRAPHQL_WS_URI: '${{ secrets.GRAPHQL_WS_URI }}',
@@ -55,8 +51,12 @@ jobs:
           EOF
         working-directory: MJExplorer
 
-      - name: Build project
-        run: npm run build
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run generated
+          npm run build --if-present
+          npm run test --if-present
         working-directory: MJExplorer
 
       - name: Build And Deploy
