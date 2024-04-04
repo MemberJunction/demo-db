@@ -7,8 +7,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "rimraf dist && tsc",
-    "start": "ts-node-dev -r dotenv/config src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev -r dotenv/config src/index.ts",    
     "generated": "cd ../GeneratedEntities ./ && npm install && npm run build && cd ../MJAPI && npm link ../GeneratedEntities",
     "link": "npm link ../GeneratedEntities",
     "codegen": "cpy --flat ../codegen/output/entities/*.ts src/generated",
