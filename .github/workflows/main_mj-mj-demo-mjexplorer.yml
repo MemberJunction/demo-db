@@ -24,11 +24,37 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Create environment file
+        run: |
+          cat << EOF > ./src/environments/environment.ts
+          export const environment = {
+            GRAPHQL_URI: '${{ secrets.GRAPHQL_URI }}',
+            GRAPHQL_WS_URI: '${{ secrets.GRAPHQL_WS_URI }}',
+            REDIRECT_URI: '${{ secrets.REDIRECT_URI }}',
+            CLIENT_ID: '${{ secrets.CLIENT_ID }}',
+            TENANT_ID: '${{ secrets.TENANT_ID }}',
+            CLIENT_AUTHORITY: '${{ secrets.CLIENT_AUTHORITY }}',
+            AUTH_TYPE: '${{ secrets.AUTH_TYPE }}',
+            NODE_ENV: '${{ secrets.NODE_ENV }}',
+            AUTOSAVE_DEBOUNCE_MS: '${{ secrets.AUTOSAVE_DEBOUNCE_MS }}',
+            SEARCH_DEBOUNCE_MS: '${{ secrets.SEARCH_DEBOUNCE_MS }}',
+            MIN_SEARCH_LENGTH: '${{ secrets.MIN_SEARCH_LENGTH }}',
+            MJ_CORE_SCHEMA_NAME: '${{ secrets.MJ_CORE_SCHEMA_NAME }}',
+            production: '${{ secrets.production }}',
+            APPLICATION_NAME: '${{ secrets.APPLICATION_NAME }}',
+            APPLICATION_INSTANCE: '${{ secrets.APPLICATION_INSTANCE }}',
+            AUTH0_DOMAIN: '${{ secrets.AUTH0_DOMAIN }}',
+            AUTH0_CLIENTID: '${{ secrets.AUTH0_CLIENTID }}'
+          };
+          EOF
+        working-directory: MJExplorer
+
+
       - name: npm install, build, and test
         run: |
           npm install
           npm run generated
-          npm run build --if-present
+          npm run build -- --prod
           npm run test --if-present
         working-directory: MJExplorer
 
