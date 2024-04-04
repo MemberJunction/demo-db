@@ -31,7 +31,7 @@ jobs:
 
       - name: Create environment file
         run: |
-          cat << EOF > ./src/environments/environment.ts
+          cat << EOF > MJExplorer/src/environments/environment.ts
           export const environment = {
             GRAPHQL_URI: '${{ secrets.GRAPHQL_URI }}',
             GRAPHQL_WS_URI: '${{ secrets.GRAPHQL_WS_URI }}',
