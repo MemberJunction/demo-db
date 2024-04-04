@@ -1,13 +1,10 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Deploy MJAPI - mj-mj-demo-mjapi
+name: Build and deploy Node.js app to Azure Web App - mj-mj-demo-mjapi
 
 on:
   push:
-    paths:
-      - 'MJAPI/**'
-      - 'GeneratedEntities/**'
     branches:
       - main
   workflow_dispatch:
@@ -26,21 +23,18 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          cd MJAPI
           npm install
-          npm run generated
           npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: |
-          cd MJAPI
-          zip release.zip ./* -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: MJAPI/release.zip
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -65,4 +59,4 @@ jobs:
           app-name: 'mj-mj-demo-mjapi'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_MJAPI }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B0BA2C8B0CA641469DB7896D15EE1FF3 }}
