@@ -55,7 +55,7 @@ jobs:
         working-directory: MJExplorer
 
       - name: Build project
-        run: npm run build -- --prod
+        run: npm run build
         working-directory: MJExplorer
 
       - name: Build And Deploy
