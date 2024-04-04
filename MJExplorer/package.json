@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "generated": "cd ../GeneratedEntities ./ && npm install && npm run build && cd ../MJExplorer && npm link ../GeneratedEntities",
+    "link": "npm link ../GeneratedEntities",
     "build": "ng build",
     "build:stage": "ng build --configuration staging",
     "watch": "ng build --watch --configuration development",
