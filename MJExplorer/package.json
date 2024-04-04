@@ -2,6 +2,9 @@
   "name": "mj_explorer",
   "description": "MemberJunction Explorer UI",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
