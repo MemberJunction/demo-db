@@ -31,7 +31,8 @@ jobs:
 
       - name: Create environment file
         run: |
-          cat << EOF > MJExplorer/src/environments/environment.ts
+          mkdir -p ./MJExplorer/src/environments # Ensure the directory exists
+          cat << EOF > ./MJExplorer/src/environments/environment.ts          
           export const environment = {
             GRAPHQL_URI: '${{ secrets.GRAPHQL_URI }}',
             GRAPHQL_WS_URI: '${{ secrets.GRAPHQL_WS_URI }}',
