@@ -1257,10 +1257,24 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "UserID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Users",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
+            },         
+            {
+                "Name": "User", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },
@@ -3972,10 +3986,24 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "UserID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Users",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
+            },         
+            {
+                "Name": "User", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },
@@ -4653,10 +4681,24 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "UserID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Users",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
+            },         
+            {
+                "Name": "User", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },
@@ -5683,10 +5725,24 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "UserID", 
+                "Description": "",  
+                "Type": "int",
+                "RelatedEntity": "Users",
+                "RelatedEntityFieldName": "ID",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Parent", 
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
+            },         
+            {
+                "Name": "User", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },

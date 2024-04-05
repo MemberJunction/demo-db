@@ -113,7 +113,7 @@
         "Name": "Dashboard Categories",
         "Description": "",
         "BaseView": "vwDashboardCategories", 
-        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","Parent"]
+        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","UserID","Parent","User"]
     },
     { 
         "Name": "Dashboards",
@@ -311,7 +311,7 @@
         "Name": "Query Categories",
         "Description": "",
         "BaseView": "vwQueryCategories", 
-        "Fields": ["ID","Name","ParentID","Description","CreatedAt","UpdatedAt","Parent"]
+        "Fields": ["ID","Name","ParentID","Description","CreatedAt","UpdatedAt","UserID","Parent","User"]
     },
     { 
         "Name": "Query Fields",
@@ -365,7 +365,7 @@
         "Name": "Report Categories",
         "Description": "",
         "BaseView": "vwReportCategories", 
-        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","Parent"]
+        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","UserID","Parent","User"]
     },
     { 
         "Name": "Report Snapshots",
@@ -461,7 +461,7 @@
         "Name": "User View Categories",
         "Description": "",
         "BaseView": "vwUserViewCategories", 
-        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","EntityID","Parent"]
+        "Fields": ["ID","Name","Description","ParentID","CreatedAt","UpdatedAt","EntityID","UserID","Parent","User"]
     },
     { 
         "Name": "User View Run Details",

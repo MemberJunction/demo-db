@@ -526,6 +526,7 @@ input CreateDashboardCategoryInput {
   Description: String
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input CreateDashboardInput {
@@ -846,6 +847,7 @@ input CreateQueryCategoryInput {
   Description: String
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input CreateQueryFieldInput {
@@ -977,6 +979,7 @@ input CreateReportCategoryInput {
   Description: String
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input CreateReportInput {
@@ -1085,6 +1088,7 @@ input CreateUserViewCategoryInput {
   EntityID: Int!
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input CreateUserViewInput {
@@ -1169,6 +1173,8 @@ type DashboardCategory_ {
   Parent: String
   ParentID: Int
   UpdatedAt: Timestamp!
+  User: String!
+  UserID: Int!
 }
 
 """
@@ -2749,6 +2755,8 @@ type QueryCategory_ {
   QueriesArray: [Query_!]!
   QueryCategoriesArray: [QueryCategory_!]!
   UpdatedAt: Timestamp!
+  User: String!
+  UserID: Int!
 }
 
 type QueryField_ {
@@ -2994,6 +3002,8 @@ type ReportCategory_ {
   ReportCategoriesArray: [ReportCategory_!]!
   ReportsArray: [Report_!]!
   UpdatedAt: Timestamp!
+  User: String!
+  UserID: Int!
 }
 
 type ReportSnapshot_ {
@@ -4722,6 +4732,7 @@ input UpdateDashboardCategoryInput {
   ID: Int!
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input UpdateDashboardInput {
@@ -5134,6 +5145,7 @@ input UpdateQueryCategoryInput {
   ID: Int!
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input UpdateQueryFieldInput {
@@ -5265,6 +5277,7 @@ input UpdateReportCategoryInput {
   ID: Int!
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input UpdateReportInput {
@@ -5389,6 +5402,7 @@ input UpdateUserViewCategoryInput {
   ID: Int!
   Name: String!
   ParentID: Int
+  UserID: Int!
 }
 
 input UpdateUserViewInput {
@@ -5606,6 +5620,8 @@ type UserViewCategory_ {
   Parent: String
   ParentID: Int
   UpdatedAt: Timestamp!
+  User: String!
+  UserID: Int!
   UserViewCategoriesArray: [UserViewCategory_!]!
   UserViewsArray: [UserView_!]!
 }
@@ -5676,6 +5692,7 @@ type User_ {
   CompanyIntegrationRunsArray: [CompanyIntegrationRun_!]!
   ConversationsArray: [Conversation_!]!
   CreatedAt: Timestamp!
+  DashboardCategoriesArray: [DashboardCategory_!]!
   DashboardsArray: [Dashboard_!]!
   DataContextsArray: [DataContext_!]!
   Email: String!
@@ -5695,8 +5712,10 @@ type User_ {
   LinkedRecordType: String!
   ListsArray: [List_!]!
   Name: String!
+  QueryCategoriesArray: [QueryCategory_!]!
   RecordChangesArray: [RecordChange_!]!
   RecordMergeLogsArray: [RecordMergeLog_!]!
+  ReportCategoriesArray: [ReportCategory_!]!
   ReportSnapshotsArray: [ReportSnapshot_!]!
   ReportsArray: [Report_!]!
   Title: String
@@ -5707,6 +5726,7 @@ type User_ {
   UserNotificationsArray: [UserNotification_!]!
   UserRecordLogsArray: [UserRecordLog_!]!
   UserRolesArray: [UserRole_!]!
+  UserViewCategoriesArray: [UserViewCategory_!]!
   UserViewRunsArray: [UserViewRun_!]!
   UserViewsArray: [UserView_!]!
   WorkspacesArray: [Workspace_!]!
