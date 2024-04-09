@@ -2,7 +2,7 @@
 * ALL ENTITIES - TypeGraphQL Type Class Definition - AUTO GENERATED FILE
 * Generated Entities and Resolvers for Server
 * 
-* GENERATED: 4/8/2024, 7:46:04 PM
+* GENERATED: 4/8/2024, 8:01:47 PM
 * 
 *   >>> DO NOT MODIFY THIS FILE!!!!!!!!!!!!
 *   >>> YOUR CHANGES WILL BE OVERWRITTEN
@@ -4073,6 +4073,21 @@ export class PersonLink_ {
     @MaxLength(8)
     UpdatedAt: Date;
     
+    @Field(() => [MembershipRenewal_])
+    MembershipRenewalsArray: MembershipRenewal_[]; // Link to MembershipRenewals
+
+    @Field(() => [Registration_])
+    RegistrationsArray: Registration_[]; // Link to Registrations
+
+    @Field(() => [Registration__events_])
+    Registrations__eventsArray: Registration__events_[]; // Link to Registrations__events
+
+    @Field(() => [Post_])
+    PostsArray: Post_[]; // Link to Posts
+
+    @Field(() => [Reply_])
+    RepliesArray: Reply_[]; // Link to Replies
+
 }
         
 //****************************************************************************
@@ -4166,7 +4181,47 @@ export class PersonLinkResolver extends ResolverBase {
         const result = this.MapFieldNamesToCodeNames('Person Links', await dataSource.query(sSQL).then((r) => r && r.length > 0 ? r[0] : {}))
         return result;
     }
-
+  
+    @FieldResolver(() => [MembershipRenewal_])
+    async MembershipRenewalsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Membership Renewals', userPayload);
+        const sSQL = `SELECT * FROM [membership].[vwMembershipRenewals] WHERE [MemberID]=${personlink_.MembershipMemberID} ` + this.getRowLevelSecurityWhereClause('Membership Renewals', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Membership Renewals', await dataSource.query(sSQL));
+        return result;
+    }
+      
+    @FieldResolver(() => [Registration_])
+    async RegistrationsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Registrations', userPayload);
+        const sSQL = `SELECT * FROM [education].[vwRegistrations] WHERE [StudentID]=${personlink_.EducationStudentID} ` + this.getRowLevelSecurityWhereClause('Registrations', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Registrations', await dataSource.query(sSQL));
+        return result;
+    }
+      
+    @FieldResolver(() => [Registration__events_])
+    async Registrations__eventsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Registrations__events', userPayload);
+        const sSQL = `SELECT * FROM [events].[vwRegistrations__events] WHERE [AttendeeID]=${personlink_.EventsAttendeeID} ` + this.getRowLevelSecurityWhereClause('Registrations__events', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Registrations__events', await dataSource.query(sSQL));
+        return result;
+    }
+      
+    @FieldResolver(() => [Post_])
+    async PostsArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Posts', userPayload);
+        const sSQL = `SELECT * FROM [community].[vwPosts] WHERE [AuthorID]=${personlink_.CommunityAuthorID} ` + this.getRowLevelSecurityWhereClause('Posts', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Posts', await dataSource.query(sSQL));
+        return result;
+    }
+      
+    @FieldResolver(() => [Reply_])
+    async RepliesArray(@Root() personlink_: PersonLink_, @Ctx() { dataSource, userPayload }: AppContext, @PubSub() pubSub: PubSubEngine) {
+        this.CheckUserReadPermissions('Replies', userPayload);
+        const sSQL = `SELECT * FROM [community].[vwReplies] WHERE [AuthorID]=${personlink_.CommunityAuthorID} ` + this.getRowLevelSecurityWhereClause('Replies', userPayload, EntityPermissionType.Read, 'AND');
+        const result = this.ArrayMapFieldNamesToCodeNames('Replies', await dataSource.query(sSQL));
+        return result;
+    }
+    
     @Mutation(() => PersonLink_)
     async CreatePersonLink(
         @Arg('input', () => CreatePersonLinkInput) input: CreatePersonLinkInput,

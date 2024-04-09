@@ -2198,7 +2198,12 @@ type PersonLink_ {
   EducationStudentID: Int
   EventsAttendeeID: Int
   MembershipMemberID: Int
+  MembershipRenewalsArray: [MembershipRenewal_!]!
   PersonLinkID: Int!
+  PostsArray: [Post_!]!
+  RegistrationsArray: [Registration_!]!
+  Registrations__eventsArray: [Registration__events_!]!
+  RepliesArray: [Reply_!]!
   UpdatedAt: Timestamp!
 }
 
