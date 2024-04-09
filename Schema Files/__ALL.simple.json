@@ -23,7 +23,7 @@
         "Name": "AI Models",
         "Description": "Catalog of all AI Models configured in the system.",
         "BaseView": "vwAIModels", 
-        "Fields": ["ID","Name","Vendor","AIModelTypeID","Description","DriverClass","DriverImportPath","IsActive","CreatedAt","UpdatedAt"]
+        "Fields": ["ID","Name","Vendor","AIModelTypeID","IsActive","Description","DriverClass","DriverImportPath","APIName","PowerRank","CreatedAt","UpdatedAt","AIModelType"]
     },
     { 
         "Name": "Application Entities",
@@ -59,7 +59,7 @@
         "Name": "Authorizations",
         "Description": "",
         "BaseView": "vwAuthorizations", 
-        "Fields": ["ID","ParentID","Name","IsActive","UseAuditLog","Description","CreatedAt","UpdatedAt"]
+        "Fields": ["ID","ParentID","Name","IsActive","UseAuditLog","Description","CreatedAt","UpdatedAt","Parent"]
     },
     { 
         "Name": "Companies",
@@ -275,7 +275,7 @@
         "Name": "List Details",
         "Description": "Tracks the records within each list.",
         "BaseView": "vwListDetails", 
-        "Fields": ["ID","ListID","RecordID","Sequence"]
+        "Fields": ["ID","ListID","RecordID","Sequence","List"]
     },
     { 
         "Name": "Lists",
@@ -329,7 +329,7 @@
         "Name": "Queue Tasks",
         "Description": "",
         "BaseView": "vwQueueTasks", 
-        "Fields": ["ID","QueueID","Status","StartedAt","EndedAt","Data","Options","Output","ErrorMessage","Comments"]
+        "Fields": ["ID","QueueID","Status","StartedAt","EndedAt","Data","Options","Output","ErrorMessage","Comments","Queue"]
     },
     { 
         "Name": "Queue Types",
@@ -377,7 +377,7 @@
         "Name": "Reports",
         "Description": "",
         "BaseView": "vwReports", 
-        "Fields": ["ID","Name","Description","CategoryID","UserID","SharingScope","ConversationID","ConversationDetailID","DataContextID","Configuration","OutputTriggerTypeID","OutputFormatTypeID","OutputDeliveryTypeID","OutputEventID","OutputFrequency","OutputTargetEmail","OutputWorkflowID","CreatedAt","UpdatedAt","Category","User","Conversation","DataContext","OutputTriggerType","OutputFormatType","OutputDeliveryType","OutputEvent"]
+        "Fields": ["ID","Name","Description","CategoryID","UserID","SharingScope","ConversationID","ConversationDetailID","DataContextID","Configuration","OutputTriggerTypeID","OutputFormatTypeID","OutputDeliveryTypeID","OutputEventID","OutputFrequency","OutputTargetEmail","OutputWorkflowID","CreatedAt","UpdatedAt","Category","User","Conversation","DataContext","OutputTriggerType","OutputFormatType","OutputDeliveryType","OutputEvent","OutputWorkflow"]
     },
     { 
         "Name": "Resource Types",

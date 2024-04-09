@@ -180,6 +180,12 @@
                 "AllowsNull": false 
             },         
             {
+                "Name": "IsActive", 
+                "Description": "",  
+                "Type": "bit",
+                "AllowsNull": false 
+            },         
+            {
                 "Name": "Description", 
                 "Description": "",  
                 "Type": "nvarchar",
@@ -198,10 +204,16 @@
                 "AllowsNull": true 
             },         
             {
-                "Name": "IsActive", 
-                "Description": "",  
-                "Type": "bit",
-                "AllowsNull": false 
+                "Name": "APIName", 
+                "Description": "The name of the model to use with API calls which might differ from the Name, if APIName is not provided, Name will be used for API calls",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "PowerRank", 
+                "Description": "A simplified power rank of each model for a given AI Model Type. For example, if we have GPT 3, GPT 3.5, and GPT 4, we would have a PowerRank of 1 for GPT3, 2 for GPT 3.5, and 3 for GPT 4. This can be used within model families like OpenAI or across all models. For example if you had Llama 2 in the mix which is similar to GPT 3.5 it would also have a PowerRank of 2. This can be used at runtime to pick the most/least powerful or compare model relative power.",  
+                "Type": "int",
+                "AllowsNull": true 
             },         
             {
                 "Name": "CreatedAt", 
@@ -213,6 +225,12 @@
                 "Name": "UpdatedAt", 
                 "Description": "",  
                 "Type": "datetime",
+                "AllowsNull": false 
+            },         
+            {
+                "Name": "AIModelType", 
+                "Description": "",  
+                "Type": "nvarchar",
                 "AllowsNull": false 
             }        
         ]
@@ -596,6 +614,12 @@
                 "Description": "",  
                 "Type": "datetime",
                 "AllowsNull": false 
+            },         
+            {
+                "Name": "Parent", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
             }        
         ]
     },
@@ -3698,6 +3722,12 @@
                 "Description": "",  
                 "Type": "int",
                 "AllowsNull": false 
+            },         
+            {
+                "Name": "List", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },
@@ -4227,6 +4257,12 @@
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
+            },         
+            {
+                "Name": "Queue", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": false 
             }        
         ]
     },
@@ -4938,6 +4974,12 @@
             },         
             {
                 "Name": "OutputEvent", 
+                "Description": "",  
+                "Type": "nvarchar",
+                "AllowsNull": true 
+            },         
+            {
+                "Name": "OutputWorkflow", 
                 "Description": "",  
                 "Type": "nvarchar",
                 "AllowsNull": true 
