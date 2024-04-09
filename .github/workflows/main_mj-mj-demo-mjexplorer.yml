@@ -52,9 +52,12 @@ jobs:
 
 
       - name: npm install and build
+        env:
+          KENDO_UI_LICENSE: ${{ secrets.KENDO_UI_LICENSE }}
         run: |
           npm install
           npm run generated
+          npx kendo-ui-license activate
           npm run build --if-present          
         working-directory: MJExplorer
 
